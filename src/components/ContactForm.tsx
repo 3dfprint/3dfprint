@@ -5,7 +5,11 @@ import { Textarea } from '@/components/ui/textarea';
 import { Label } from '@/components/ui/label';
 import { Card, CardContent, CardHeader, CardTitle } from '@/components/ui/card';
 import { useToast } from '@/hooks/use-toast';
-import { Mail, Phone } from 'lucide-react';
+import { Mail, Phone, Upload, X, FileText, AlertCircle } from 'lucide-react';
+
+interface FileWithPreview extends File {
+  preview?: string;
+}
 
 const ContactForm = () => {
   const [formData, setFormData] = useState({
@@ -13,14 +17,141 @@ const ContactForm = () => {
     email: '',
     phone: '',
     service: '',
-    message: ''
+    message: '',
+    budget: '',
+    deadline: ''
   });
+  const [files, setFiles] = useState<FileWithPreview[]>([]);
   const [isSubmitting, setIsSubmitting] = useState(false);
+  const [dragActive, setDragActive] = useState(false);
   const { toast } = useToast();
+
+  const allowedFileTypes = ['.zip', '.3mf', '.jpg', '.jpeg', '.png', '.stl'];
+  const maxFileSize = 50 * 1024 * 1024; // 50MB
+  const maxFiles = 5;
 
   const handleInputChange = (e: React.ChangeEvent<HTMLInputElement | HTMLTextAreaElement | HTMLSelectElement>) => {
     const { name, value } = e.target;
     setFormData(prev => ({ ...prev, [name]: value }));
+  };
+
+  const validateFile = (file: File): string | null => {
+    const fileExtension = '.' + file.name.split('.').pop()?.toLowerCase();
+    
+    if (!allowedFileTypes.includes(fileExtension)) {
+      return `Tipo de arquivo não permitido. Formatos aceitos: ${allowedFileTypes.join(', ')}`;
+    }
+    
+    if (file.size > maxFileSize) {
+      return `Arquivo muito grande. Tamanho máximo: 50MB`;
+    }
+    
+    return null;
+  };
+
+  const handleFileSelect = (selectedFiles: FileList | null) => {
+    if (!selectedFiles) return;
+
+    const newFiles: FileWithPreview[] = [];
+    const errors: string[] = [];
+
+    Array.from(selectedFiles).forEach(file => {
+      const error = validateFile(file);
+      if (error) {
+        errors.push(`${file.name}: ${error}`);
+        return;
+      }
+
+      if (files.length + newFiles.length >= maxFiles) {
+        errors.push(`Máximo de ${maxFiles} arquivos permitidos`);
+        return;
+      }
+
+      const fileWithPreview = file as FileWithPreview;
+      
+      // Create preview for images
+      if (file.type.startsWith('image/')) {
+        fileWithPreview.preview = URL.createObjectURL(file);
+      }
+      
+      newFiles.push(fileWithPreview);
+    });
+
+    if (errors.length > 0) {
+      toast({
+        title: "Erro no upload",
+        description: errors.join('\n'),
+        variant: "destructive",
+      });
+    }
+
+    if (newFiles.length > 0) {
+      setFiles(prev => [...prev, ...newFiles]);
+      toast({
+        title: "Arquivos adicionados",
+        description: `${newFiles.length} arquivo(s) adicionado(s) com sucesso`,
+      });
+    }
+  };
+
+  const removeFile = (index: number) => {
+    setFiles(prev => {
+      const newFiles = [...prev];
+      const removedFile = newFiles[index];
+      
+      // Revoke object URL to prevent memory leaks
+      if (removedFile.preview) {
+        URL.revokeObjectURL(removedFile.preview);
+      }
+      
+      newFiles.splice(index, 1);
+      return newFiles;
+    });
+  };
+
+  const handleDrag = (e: React.DragEvent) => {
+    e.preventDefault();
+    e.stopPropagation();
+    if (e.type === "dragenter" || e.type === "dragover") {
+      setDragActive(true);
+    } else if (e.type === "dragleave") {
+      setDragActive(false);
+    }
+  };
+
+  const handleDrop = (e: React.DragEvent) => {
+    e.preventDefault();
+    e.stopPropagation();
+    setDragActive(false);
+    
+    if (e.dataTransfer.files && e.dataTransfer.files[0]) {
+      handleFileSelect(e.dataTransfer.files);
+    }
+  };
+
+  const formatFileSize = (bytes: number): string => {
+    if (bytes === 0) return '0 Bytes';
+    const k = 1024;
+    const sizes = ['Bytes', 'KB', 'MB', 'GB'];
+    const i = Math.floor(Math.log(bytes) / Math.log(k));
+    return parseFloat((bytes / Math.pow(k, i)).toFixed(2)) + ' ' + sizes[i];
+  };
+
+  const getFileIcon = (fileName: string) => {
+    const extension = fileName.split('.').pop()?.toLowerCase();
+    switch (extension) {
+      case 'zip':
+        return '📦';
+      case '3mf':
+      case 'stl':
+        return '🔧';
+      case 'jpg':
+      case 'jpeg':
+      case 'png':
+        return '🖼️';
+      default:
+        return '📄';
+    }
   };
 
   const handleSubmit = async (e: React.FormEvent) => {
@@ -28,18 +159,74 @@ const ContactForm = () => {
     setIsSubmitting(true);
 
     try {
-      // Simulando envio do formulário
-      await new Promise(resolve => setTimeout(resolve, 1000));
+      // Create FormData for file upload
+      const formDataToSend = new FormData();
       
-      toast({
-        title: "Mensagem enviada com sucesso!",
-        description: "Entraremos em contato em breve.",
+      // Add form fields
+      Object.entries(formData).forEach(([key, value]) => {
+        formDataToSend.append(key, value);
       });
       
-      setFormData({ name: '', email: '', phone: '', service: '', message: '' });
+      // Add files
+      files.forEach((file, index) => {
+        formDataToSend.append(`file_${index}`, file);
+      });
+
+      // Simulate API call
+      await new Promise(resolve => setTimeout(resolve, 2000));
+      
+      // Generate WhatsApp message
+      const whatsappMessage = `
+🎯 *Nova Solicitação de Orçamento - 3DFPrint*
+
+👤 *Cliente:* ${formData.name}
+📧 *Email:* ${formData.email}
+📱 *Telefone:* ${formData.phone || 'Não informado'}
+🛠️ *Serviço:* ${formData.service || 'Não especificado'}
+💰 *Orçamento:* ${formData.budget || 'Não informado'}
+⏰ *Prazo:* ${formData.deadline || 'Não informado'}
+
+📝 *Mensagem:*
+${formData.message}
+
+📎 *Arquivos anexados:* ${files.length} arquivo(s)
+${files.map(file => `• ${file.name} (${formatFileSize(file.size)})`).join('\n')}
+
+---
+Enviado via formulário do site 3DFPrint
+      `.trim();
+
+      // Open WhatsApp with the message
+      const encodedMessage = encodeURIComponent(whatsappMessage);
+      window.open(`https://wa.me/5511913311780?text=${encodedMessage}`, '_blank');
+      
+      toast({
+        title: "Solicitação enviada com sucesso! 🎉",
+        description: "Você será redirecionado para o WhatsApp para finalizar o envio dos arquivos.",
+      });
+      
+      // Reset form
+      setFormData({ 
+        name: '', 
+        email: '', 
+        phone: '', 
+        service: '', 
+        message: '', 
+        budget: '', 
+        deadline: '' 
+      });
+      
+      // Clean up file previews
+      files.forEach(file => {
+        if (file.preview) {
+          URL.revokeObjectURL(file.preview);
+        }
+      });
+      setFiles([]);
+      
     } catch (error) {
       toast({
-        title: "Erro ao enviar mensagem",
+        title: "Erro ao enviar solicitação",
         description: "Tente novamente ou entre em contato via WhatsApp.",
         variant: "destructive",
       });
@@ -112,6 +299,23 @@ const ContactForm = () => {
                 </li>
               </ul>
             </div>
+
+            <div className="bg-blue-50 dark:bg-blue-900/20 p-4 rounded-lg border border-blue-200 dark:border-blue-800">
+              <div className="flex items-start space-x-3">
+                <AlertCircle className="text-blue-600 dark:text-blue-400 mt-0.5" size={20} />
+                <div>
+                  <h5 className="font-semibold text-blue-800 dark:text-blue-300 mb-1">
+                    Formatos de arquivo aceitos:
+                  </h5>
+                  <p className="text-sm text-blue-700 dark:text-blue-400">
+                    .ZIP, .3MF, .STL, .JPG, .PNG
+                  </p>
+                  <p className="text-xs text-blue-600 dark:text-blue-500 mt-1">
+                    Tamanho máximo: 50MB por arquivo | Máximo: 5 arquivos
+                  </p>
+                </div>
+              </div>
+            </div>
           </div>
 
           {/* Formulário */}
@@ -158,6 +362,7 @@ const ContactForm = () => {
                       value={formData.phone}
                       onChange={handleInputChange}
                       className="mt-1 dark:bg-gray-700 dark:border-gray-600 dark:text-gray-100"
+                      placeholder="(11) 99999-9999"
                     />
                   </div>
                   <div>
@@ -170,17 +375,55 @@ const ContactForm = () => {
                       className="mt-1 w-full px-3 py-2 border border-gray-300 dark:border-gray-600 rounded-md focus:outline-none focus:ring-2 focus:ring-brand-blue dark:bg-gray-700 dark:text-gray-100"
                     >
                       <option value="">Selecione um serviço</option>
-                      <option value="prototipagem">Prototipagem</option>
+                      <option value="prototipagem">Prototipagem para PMEs</option>
                       <option value="cosplay">Props para Cosplay</option>
                       <option value="action-figures">Action Figures</option>
                       <option value="replicas">Réplicas</option>
-                      <option value="outros">Outros</option>
+                      <option value="pecas-funcionais">Peças Funcionais</option>
+                      <option value="projetos-customizados">Projetos Customizados</option>
+                    </select>
+                  </div>
+                </div>
+
+                <div className="grid md:grid-cols-2 gap-4">
+                  <div>
+                    <Label htmlFor="budget" className="dark:text-gray-200">Orçamento Estimado</Label>
+                    <select
+                      id="budget"
+                      name="budget"
+                      value={formData.budget}
+                      onChange={handleInputChange}
+                      className="mt-1 w-full px-3 py-2 border border-gray-300 dark:border-gray-600 rounded-md focus:outline-none focus:ring-2 focus:ring-brand-blue dark:bg-gray-700 dark:text-gray-100"
+                    >
+                      <option value="">Selecione uma faixa</option>
+                      <option value="ate-100">Até R$ 100</option>
+                      <option value="100-300">R$ 100 - R$ 300</option>
+                      <option value="300-500">R$ 300 - R$ 500</option>
+                      <option value="500-1000">R$ 500 - R$ 1.000</option>
+                      <option value="acima-1000">Acima de R$ 1.000</option>
+                    </select>
+                  </div>
+                  <div>
+                    <Label htmlFor="deadline" className="dark:text-gray-200">Prazo Desejado</Label>
+                    <select
+                      id="deadline"
+                      name="deadline"
+                      value={formData.deadline}
+                      onChange={handleInputChange}
+                      className="mt-1 w-full px-3 py-2 border border-gray-300 dark:border-gray-600 rounded-md focus:outline-none focus:ring-2 focus:ring-brand-blue dark:bg-gray-700 dark:text-gray-100"
+                    >
+                      <option value="">Selecione o prazo</option>
+                      <option value="urgente">Urgente (1-3 dias)</option>
+                      <option value="1-semana">1 semana</option>
+                      <option value="2-semanas">2 semanas</option>
+                      <option value="1-mes">1 mês</option>
+                      <option value="flexivel">Flexível</option>
                     </select>
                   </div>
                 </div>
 
                 <div>
-                  <Label htmlFor="message" className="dark:text-gray-200">Mensagem *</Label>
+                  <Label htmlFor="message" className="dark:text-gray-200">Descrição do Projeto *</Label>
                   <Textarea
                     id="message"
                     name="message"
@@ -189,17 +432,101 @@ const ContactForm = () => {
                     required
                     rows={4}
                     className="mt-1 dark:bg-gray-700 dark:border-gray-600 dark:text-gray-100"
-                    placeholder="Descreva seu projeto ou dúvida..."
+                    placeholder="Descreva detalhadamente seu projeto, incluindo dimensões, materiais preferidos, acabamento desejado, etc."
                   />
+                </div>
+
+                {/* File Upload Area */}
+                <div>
+                  <Label className="dark:text-gray-200 mb-2 block">
+                    Anexar Arquivos (Opcional)
+                  </Label>
+                  <div
+                    className={`border-2 border-dashed rounded-lg p-6 text-center transition-colors ${
+                      dragActive
+                        ? 'border-brand-blue bg-blue-50 dark:bg-blue-900/20'
+                        : 'border-gray-300 dark:border-gray-600 hover:border-brand-blue dark:hover:border-brand-blue'
+                    }`}
+                    onDragEnter={handleDrag}
+                    onDragLeave={handleDrag}
+                    onDragOver={handleDrag}
+                    onDrop={handleDrop}
+                  >
+                    <Upload className="mx-auto h-12 w-12 text-gray-400 dark:text-gray-500 mb-4" />
+                    <p className="text-gray-600 dark:text-gray-300 mb-2">
+                      Arraste e solte seus arquivos aqui ou
+                    </p>
+                    <label htmlFor="file-upload" className="cursor-pointer">
+                      <span className="text-brand-blue hover:text-blue-700 font-medium">
+                        clique para selecionar
+                      </span>
+                      <input
+                        id="file-upload"
+                        type="file"
+                        multiple
+                        accept=".zip,.3mf,.jpg,.jpeg,.png,.stl"
+                        onChange={(e) => handleFileSelect(e.target.files)}
+                        className="hidden"
+                      />
+                    </label>
+                    <p className="text-xs text-gray-500 dark:text-gray-400 mt-2">
+                      Formatos: ZIP, 3MF, STL, JPG, PNG | Máx: 50MB por arquivo
+                    </p>
+                  </div>
+
+                  {/* File List */}
+                  {files.length > 0 && (
+                    <div className="mt-4 space-y-2">
+                      <h4 className="font-medium text-gray-800 dark:text-gray-200">
+                        Arquivos selecionados ({files.length}/{maxFiles}):
+                      </h4>
+                      {files.map((file, index) => (
+                        <div
+                          key={index}
+                          className="flex items-center justify-between p-3 bg-gray-50 dark:bg-gray-700 rounded-lg"
+                        >
+                          <div className="flex items-center space-x-3">
+                            <span className="text-2xl">{getFileIcon(file.name)}</span>
+                            <div>
+                              <p className="text-sm font-medium text-gray-800 dark:text-gray-200">
+                                {file.name}
+                              </p>
+                              <p className="text-xs text-gray-500 dark:text-gray-400">
+                                {formatFileSize(file.size)}
+                              </p>
+                            </div>
+                          </div>
+                          <button
+                            type="button"
+                            onClick={() => removeFile(index)}
+                            className="text-red-500 hover:text-red-700 p-1"
+                          >
+                            <X size={16} />
+                          </button>
+                        </div>
+                      ))}
+                    </div>
+                  )}
                 </div>
 
                 <Button 
                   type="submit" 
                   disabled={isSubmitting}
-                  className="w-full bg-brand-red hover:bg-red-700 text-white py-3"
+                  className="w-full bg-brand-red hover:bg-red-700 text-white py-3 text-lg font-semibold"
                 >
-                  {isSubmitting ? 'Enviando...' : 'Enviar Mensagem'}
+                  {isSubmitting ? (
+                    <div className="flex items-center space-x-2">
+                      <div className="animate-spin rounded-full h-4 w-4 border-b-2 border-white"></div>
+                      <span>Enviando...</span>
+                    </div>
+                  ) : (
+                    'Solicitar Orçamento'
+                  )}
                 </Button>
+
+                <p className="text-xs text-gray-500 dark:text-gray-400 text-center">
+                  Ao enviar este formulário, você será redirecionado para o WhatsApp para finalizar o envio dos arquivos.
+                </p>
               </form>
             </CardContent>
           </Card>
