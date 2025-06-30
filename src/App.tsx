@@ -11,7 +11,7 @@ const queryClient = new QueryClient();
 
 const App = () => (
   <QueryClientProvider client={queryClient}>
-    <ThemeProvider defaultTheme="light" storageKey="3dfprint-theme">
+    <ThemeProvider defaultTheme="dark" storageKey="3dfprint-theme">
       <TooltipProvider>
         <Toaster />
         <Sonner />
