@@ -20,7 +20,7 @@ const Header = () => {
         <div className="flex items-center justify-between h-16">
           <div className="flex items-center space-x-2">
             <img 
-              src="/lovable-uploads/efc49af6-9b49-4eea-81a9-0c4f028a6af9.png" 
+              src="/Design sem nome_20250630_010205_0000.png" 
               alt="3DFPrint Logo" 
               className="h-12 w-auto"
             />

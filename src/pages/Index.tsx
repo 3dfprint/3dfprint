@@ -74,7 +74,7 @@ const Index = () => {
             <div className="relative">
               <div className="w-full h-96 bg-gradient-to-br from-brand-red/10 to-brand-blue/10 dark:from-brand-red/20 dark:to-brand-blue/20 rounded-2xl flex items-center justify-center">
                 <img 
-                  src="/lovable-uploads/efc49af6-9b49-4eea-81a9-0c4f028a6af9.png" 
+                  src="/Design sem nome_20250630_010205_0000.png" 
                   alt="3DFPrint Logo" 
                   className="w-80 h-auto"
                 />
