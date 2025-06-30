@@ -1,4 +1,3 @@
-
 import { useState, useEffect } from 'react';
 import { Button } from '@/components/ui/button';
 import { Card, CardContent } from '@/components/ui/card';
@@ -275,7 +274,7 @@ const Index = () => {
               Solicitar Orçamento
             </Button>
             <Button 
-              onClick={() => window.open('https://wa.me/5551999999999', '_blank')}
+              onClick={() => window.open('https://wa.me/5511913311780', '_blank')}
               variant="outline"
               size="lg"
               className="border-white text-white hover:bg-white hover:text-brand-blue px-8 py-4 text-lg font-semibold"

@@ -1,4 +1,3 @@
-
 import { useState } from 'react';
 import { MessageCircle, X } from 'lucide-react';
 import { Button } from '@/components/ui/button';
@@ -10,7 +9,7 @@ const WhatsAppWidget = () => {
     const message = encodeURIComponent(
       "Olá! Gostaria de falar com a Ana, a assistente de IA da 3DFPrint, sobre serviços de impressão 3D."
     );
-    window.open(`https://wa.me/5551999999999?text=${message}`, '_blank');
+    window.open(`https://wa.me/5511913311780?text=${message}`, '_blank');
   };
 
   return (

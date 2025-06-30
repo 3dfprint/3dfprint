@@ -1,4 +1,3 @@
-
 import { useState } from 'react';
 import { Button } from '@/components/ui/button';
 import { Input } from '@/components/ui/input';
@@ -75,7 +74,7 @@ const ContactForm = () => {
                   </div>
                   <div>
                     <p className="font-semibold text-gray-800">Email</p>
-                    <p className="text-gray-600">contato@3dfprint.com.br</p>
+                    <p className="text-gray-600">contato@3dfprint3d.com.br</p>
                   </div>
                 </div>
                 <div className="flex items-center space-x-4">
@@ -84,7 +83,7 @@ const ContactForm = () => {
                   </div>
                   <div>
                     <p className="font-semibold text-gray-800">WhatsApp</p>
-                    <p className="text-gray-600">(51) 99999-9999</p>
+                    <p className="text-gray-600">(11) 91331-1780</p>
                   </div>
                 </div>
               </div>

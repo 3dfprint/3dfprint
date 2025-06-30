@@ -1,4 +1,3 @@
-
 import { Instagram, Mail, Phone } from 'lucide-react';
 
 const Footer = () => {
@@ -9,14 +8,14 @@ const Footer = () => {
   };
 
   const handleEmailClick = () => {
-    window.location.href = 'mailto:contato@3dfprint.com.br';
+    window.location.href = 'mailto:contato@3dfprint3d.com.br';
   };
 
   const handleWhatsAppClick = () => {
     const message = encodeURIComponent(
       "Olá! Gostaria de saber mais sobre os serviços da 3DFPrint."
     );
-    window.open(`https://wa.me/5551999999999?text=${message}`, '_blank');
+    window.open(`https://wa.me/5511913311780?text=${message}`, '_blank');
   };
 
   return (
@@ -72,8 +71,8 @@ const Footer = () => {
           <div>
             <h3 className="text-xl font-bold mb-4">Contato</h3>
             <div className="space-y-2 text-gray-300">
-              <p>📧 contato@3dfprint.com.br</p>
-              <p>📱 (51) 99999-9999</p>
+              <p>📧 contato@3dfprint3d.com.br</p>
+              <p>📱 (11) 91331-1780</p>
               <p>🤖 Fale com a Ana (IA) via WhatsApp</p>
             </div>
           </div>
