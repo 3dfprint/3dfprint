@@ -5,7 +5,7 @@ import { Textarea } from '@/components/ui/textarea';
 import { Label } from '@/components/ui/label';
 import { Card, CardContent, CardHeader, CardTitle } from '@/components/ui/card';
 import { useToast } from '@/hooks/use-toast';
-import { Mail, Phone, Upload, X, FileText, AlertCircle, CheckCircle } from 'lucide-react';
+import { Mail, Phone, Upload, X, AlertCircle } from 'lucide-react';
 import InputMask from 'react-input-mask';
 import emailjs from 'emailjs-com';
 
@@ -388,20 +388,6 @@ Enviado via formulário do site 3DFPrint
               </ul>
             </div>
 
-            <div className="bg-green-50 dark:bg-green-900/20 p-4 rounded-lg border border-green-200 dark:border-green-800">
-              <div className="flex items-start space-x-3">
-                <CheckCircle className="text-green-600 dark:text-green-400 mt-0.5" size={20} />
-                <div>
-                  <h5 className="font-semibold text-green-800 dark:text-green-300 mb-1">
-                    Envio automático por email:
-                  </h5>
-                  <p className="text-sm text-green-700 dark:text-green-400">
-                    Sua solicitação será enviada automaticamente para flaviodfc@gmail.com
-                  </p>
-                </div>
-              </div>
-            </div>
-
             <div className="bg-blue-50 dark:bg-blue-900/20 p-4 rounded-lg border border-blue-200 dark:border-blue-800">
               <div className="flex items-start space-x-3">
                 <AlertCircle className="text-blue-600 dark:text-blue-400 mt-0.5" size={20} />
@@ -474,9 +460,6 @@ Enviado via formulário do site 3DFPrint
                         />
                       )}
                     </InputMask>
-                    <p className="text-xs text-gray-500 dark:text-gray-400 mt-1">
-                      Fixo: (xx) xxxx-xxxx | Celular: (xx) 9xxxx-xxxx
-                    </p>
                   </div>
                   <div>
                     <Label htmlFor="service" className="dark:text-gray-200">Serviço de Interesse</Label>
