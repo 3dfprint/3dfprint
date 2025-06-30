@@ -163,8 +163,8 @@ const ContactForm = () => {
   const validateWhatsApp = (whatsapp: string): boolean => {
     // Remove all non-numeric characters
     const cleanNumber = whatsapp.replace(/\D/g, '');
-    // Check if it has 11 digits (Brazilian mobile format)
-    return cleanNumber.length === 11;
+    // Check if it has 11 digits (Brazilian mobile format: DDD + 9 digits)
+    return cleanNumber.length === 11 && cleanNumber.charAt(2) === '9';
   };
 
   const sendEmail = async (templateParams: any) => {
@@ -190,7 +190,7 @@ const ContactForm = () => {
     if (!validateWhatsApp(formData.whatsapp)) {
       toast({
         title: "WhatsApp inválido",
-        description: "Por favor, insira um número de WhatsApp válido no formato (xx) xxxxx-xxxx",
+        description: "Por favor, insira um número de WhatsApp válido no formato (xx) 9xxxx-xxxx com DDD brasileiro",
         variant: "destructive",
       });
       return;
@@ -453,6 +453,9 @@ Enviado via formulário do site 3DFPrint
                         />
                       )}
                     </InputMask>
+                    <p className="text-xs text-gray-500 dark:text-gray-400 mt-1">
+                      Formato: (DDD) 9xxxx-xxxx - Ex: (11) 99999-9999
+                    </p>
                   </div>
                   <div>
                     <Label htmlFor="service" className="dark:text-gray-200">Serviço de Interesse</Label>
