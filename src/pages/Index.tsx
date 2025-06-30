@@ -226,7 +226,7 @@ const Index = () => {
                   />
                 </div>
                 <h3 className="text-xl font-bold mb-2 text-gray-800 dark:text-gray-100">Flavio Del Fiol Costa</h3>
-                <p className="text-brand-red font-semibold mb-3">CTO & Co-Fundador</p>
+                <p className="text-brand-red font-semibold mb-3">Big Boss</p>
                 <p className="text-gray-600 dark:text-gray-300 text-sm leading-relaxed">
                   Freelance full stack com experiência em soluções tecnológicas. 
                   Formado em Engenharia, pós-graduado em Análise e Auditoria de Sistemas 
@@ -245,7 +245,7 @@ const Index = () => {
                   />
                 </div>
                 <h3 className="text-xl font-bold mb-2 text-gray-800 dark:text-gray-100">Paula Del Fiol Costa</h3>
-                <p className="text-brand-yellow font-semibold mb-3">Diretora Criativa</p>
+                <p className="text-brand-yellow font-semibold mb-3">Head Designer</p>
                 <p className="text-gray-600 dark:text-gray-300 text-sm leading-relaxed">
                   Mente criativa responsável pela criação e execução de projetos. 
                   Cosplay e prop maker experiente, marketing manager formada em Administração.
@@ -263,7 +263,7 @@ const Index = () => {
                   />
                 </div>
                 <h3 className="text-xl font-bold mb-2 text-gray-800 dark:text-gray-100">Lucas Del Fiol Costa</h3>
-                <p className="text-brand-blue font-semibold mb-3">Engenheiro de Software</p>
+                <p className="text-brand-blue font-semibold mb-3">Engineer</p>
                 <p className="text-gray-600 dark:text-gray-300 text-sm leading-relaxed">
                   Formado em Engenharia Eletrônica pela POLI e técnico em Mecatrônica pela ETEC. 
                   Especialista em desenvolvimento de soluções técnicas inovadoras.
