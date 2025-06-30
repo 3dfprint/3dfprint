@@ -5,7 +5,9 @@ import { Textarea } from '@/components/ui/textarea';
 import { Label } from '@/components/ui/label';
 import { Card, CardContent, CardHeader, CardTitle } from '@/components/ui/card';
 import { useToast } from '@/hooks/use-toast';
-import { Mail, Phone, Upload, X, FileText, AlertCircle } from 'lucide-react';
+import { Mail, Phone, Upload, X, FileText, AlertCircle, CheckCircle } from 'lucide-react';
+import InputMask from 'react-input-mask';
+import emailjs from 'emailjs-com';
 
 interface FileWithPreview extends File {
   preview?: string;
@@ -15,10 +17,9 @@ const ContactForm = () => {
   const [formData, setFormData] = useState({
     name: '',
     email: '',
-    phone: '',
+    whatsapp: '',
     service: '',
     message: '',
-    budget: '',
     deadline: ''
   });
   const [files, setFiles] = useState<FileWithPreview[]>([]);
@@ -29,6 +30,11 @@ const ContactForm = () => {
   const allowedFileTypes = ['.zip', '.3mf', '.jpg', '.jpeg', '.png', '.stl'];
   const maxFileSize = 50 * 1024 * 1024; // 50MB
   const maxFiles = 5;
+
+  // EmailJS configuration
+  const EMAILJS_SERVICE_ID = 'service_3dfprint';
+  const EMAILJS_TEMPLATE_ID = 'template_3dfprint';
+  const EMAILJS_USER_ID = 'user_3dfprint';
 
   const handleInputChange = (e: React.ChangeEvent<HTMLInputElement | HTMLTextAreaElement | HTMLSelectElement>) => {
     const { name, value } = e.target;
@@ -154,36 +160,71 @@ const ContactForm = () => {
     }
   };
 
+  const validateWhatsApp = (whatsapp: string): boolean => {
+    // Remove all non-numeric characters
+    const cleanNumber = whatsapp.replace(/\D/g, '');
+    // Check if it has 11 digits (Brazilian mobile format)
+    return cleanNumber.length === 11;
+  };
+
+  const sendEmail = async (templateParams: any) => {
+    try {
+      // Initialize EmailJS (you would need to set up your EmailJS account)
+      const result = await emailjs.send(
+        EMAILJS_SERVICE_ID,
+        EMAILJS_TEMPLATE_ID,
+        templateParams,
+        EMAILJS_USER_ID
+      );
+      return result;
+    } catch (error) {
+      console.error('EmailJS Error:', error);
+      throw error;
+    }
+  };
+
   const handleSubmit = async (e: React.FormEvent) => {
     e.preventDefault();
+    
+    // Validate WhatsApp
+    if (!validateWhatsApp(formData.whatsapp)) {
+      toast({
+        title: "WhatsApp inválido",
+        description: "Por favor, insira um número de WhatsApp válido no formato (xx) xxxxx-xxxx",
+        variant: "destructive",
+      });
+      return;
+    }
+
     setIsSubmitting(true);
 
     try {
-      // Create FormData for file upload
-      const formDataToSend = new FormData();
-      
-      // Add form fields
-      Object.entries(formData).forEach(([key, value]) => {
-        formDataToSend.append(key, value);
-      });
-      
-      // Add files
-      files.forEach((file, index) => {
-        formDataToSend.append(`file_${index}`, file);
-      });
+      // Prepare email template parameters
+      const templateParams = {
+        to_email: 'flaviodfc@gmail.com',
+        from_name: formData.name,
+        from_email: formData.email,
+        whatsapp: formData.whatsapp,
+        service: formData.service || 'Não especificado',
+        deadline: formData.deadline || 'Não informado',
+        message: formData.message,
+        files_count: files.length,
+        files_list: files.map(file => `${file.name} (${formatFileSize(file.size)})`).join('\n'),
+        reply_to: formData.email,
+        subject: `Nova Solicitação de Orçamento - ${formData.name}`,
+      };
 
-      // Simulate API call
-      await new Promise(resolve => setTimeout(resolve, 2000));
+      // Send email
+      await sendEmail(templateParams);
       
-      // Generate WhatsApp message
+      // Generate WhatsApp message for backup/immediate contact
       const whatsappMessage = `
 🎯 *Nova Solicitação de Orçamento - 3DFPrint*
 
 👤 *Cliente:* ${formData.name}
 📧 *Email:* ${formData.email}
-📱 *Telefone:* ${formData.phone || 'Não informado'}
+📱 *WhatsApp:* ${formData.whatsapp}
 🛠️ *Serviço:* ${formData.service || 'Não especificado'}
-💰 *Orçamento:* ${formData.budget || 'Não informado'}
 ⏰ *Prazo:* ${formData.deadline || 'Não informado'}
 
 📝 *Mensagem:*
@@ -193,6 +234,7 @@ ${formData.message}
 ${files.map(file => `• ${file.name} (${formatFileSize(file.size)})`).join('\n')}
 
 ---
+✅ Email enviado automaticamente para flaviodfc@gmail.com
 Enviado via formulário do site 3DFPrint
       `.trim();
 
@@ -202,17 +244,16 @@ Enviado via formulário do site 3DFPrint
       
       toast({
         title: "Solicitação enviada com sucesso! 🎉",
-        description: "Você será redirecionado para o WhatsApp para finalizar o envio dos arquivos.",
+        description: "Email enviado para flaviodfc@gmail.com e WhatsApp aberto para envio dos arquivos.",
       });
       
       // Reset form
       setFormData({ 
         name: '', 
         email: '', 
-        phone: '', 
+        whatsapp: '', 
         service: '', 
         message: '', 
-        budget: '', 
         deadline: '' 
       });
       
@@ -225,9 +266,35 @@ Enviado via formulário do site 3DFPrint
       setFiles([]);
       
     } catch (error) {
+      console.error('Error sending email:', error);
+      
+      // Fallback to WhatsApp only
+      const whatsappMessage = `
+🎯 *Nova Solicitação de Orçamento - 3DFPrint*
+
+👤 *Cliente:* ${formData.name}
+📧 *Email:* ${formData.email}
+📱 *WhatsApp:* ${formData.whatsapp}
+🛠️ *Serviço:* ${formData.service || 'Não especificado'}
+⏰ *Prazo:* ${formData.deadline || 'Não informado'}
+
+📝 *Mensagem:*
+${formData.message}
+
+📎 *Arquivos anexados:* ${files.length} arquivo(s)
+${files.map(file => `• ${file.name} (${formatFileSize(file.size)})`).join('\n')}
+
+---
+⚠️ Erro no envio automático do email - enviando via WhatsApp
+Enviado via formulário do site 3DFPrint
+      `.trim();
+
+      const encodedMessage = encodeURIComponent(whatsappMessage);
+      window.open(`https://wa.me/5511913311780?text=${encodedMessage}`, '_blank');
+      
       toast({
-        title: "Erro ao enviar solicitação",
-        description: "Tente novamente ou entre em contato via WhatsApp.",
+        title: "Solicitação enviada via WhatsApp",
+        description: "Houve um problema no envio do email, mas sua solicitação foi enviada via WhatsApp.",
         variant: "destructive",
       });
     } finally {
@@ -261,7 +328,7 @@ Enviado via formulário do site 3DFPrint
                   </div>
                   <div>
                     <p className="font-semibold text-gray-800 dark:text-gray-100">Email</p>
-                    <p className="text-gray-600 dark:text-gray-300">contato@3dfprint3d.com.br</p>
+                    <p className="text-gray-600 dark:text-gray-300">flaviodfc@gmail.com</p>
                   </div>
                 </div>
                 <div className="flex items-center space-x-4">
@@ -298,6 +365,20 @@ Enviado via formulário do site 3DFPrint
                   <span>Qualidade garantida</span>
                 </li>
               </ul>
+            </div>
+
+            <div className="bg-green-50 dark:bg-green-900/20 p-4 rounded-lg border border-green-200 dark:border-green-800">
+              <div className="flex items-start space-x-3">
+                <CheckCircle className="text-green-600 dark:text-green-400 mt-0.5" size={20} />
+                <div>
+                  <h5 className="font-semibold text-green-800 dark:text-green-300 mb-1">
+                    Envio automático por email:
+                  </h5>
+                  <p className="text-sm text-green-700 dark:text-green-400">
+                    Sua solicitação será enviada automaticamente para flaviodfc@gmail.com
+                  </p>
+                </div>
+              </div>
             </div>
 
             <div className="bg-blue-50 dark:bg-blue-900/20 p-4 rounded-lg border border-blue-200 dark:border-blue-800">
@@ -355,15 +436,23 @@ Enviado via formulário do site 3DFPrint
 
                 <div className="grid md:grid-cols-2 gap-4">
                   <div>
-                    <Label htmlFor="phone" className="dark:text-gray-200">Telefone</Label>
-                    <Input
-                      id="phone"
-                      name="phone"
-                      value={formData.phone}
+                    <Label htmlFor="whatsapp" className="dark:text-gray-200">WhatsApp *</Label>
+                    <InputMask
+                      mask="(99) 99999-9999"
+                      value={formData.whatsapp}
                       onChange={handleInputChange}
-                      className="mt-1 dark:bg-gray-700 dark:border-gray-600 dark:text-gray-100"
-                      placeholder="(11) 99999-9999"
-                    />
+                    >
+                      {(inputProps: any) => (
+                        <Input
+                          {...inputProps}
+                          id="whatsapp"
+                          name="whatsapp"
+                          required
+                          className="mt-1 dark:bg-gray-700 dark:border-gray-600 dark:text-gray-100"
+                          placeholder="(11) 99999-9999"
+                        />
+                      )}
+                    </InputMask>
                   </div>
                   <div>
                     <Label htmlFor="service" className="dark:text-gray-200">Serviço de Interesse</Label>
@@ -385,41 +474,22 @@ Enviado via formulário do site 3DFPrint
                   </div>
                 </div>
 
-                <div className="grid md:grid-cols-2 gap-4">
-                  <div>
-                    <Label htmlFor="budget" className="dark:text-gray-200">Orçamento Estimado</Label>
-                    <select
-                      id="budget"
-                      name="budget"
-                      value={formData.budget}
-                      onChange={handleInputChange}
-                      className="mt-1 w-full px-3 py-2 border border-gray-300 dark:border-gray-600 rounded-md focus:outline-none focus:ring-2 focus:ring-brand-blue dark:bg-gray-700 dark:text-gray-100"
-                    >
-                      <option value="">Selecione uma faixa</option>
-                      <option value="ate-100">Até R$ 100</option>
-                      <option value="100-300">R$ 100 - R$ 300</option>
-                      <option value="300-500">R$ 300 - R$ 500</option>
-                      <option value="500-1000">R$ 500 - R$ 1.000</option>
-                      <option value="acima-1000">Acima de R$ 1.000</option>
-                    </select>
-                  </div>
-                  <div>
-                    <Label htmlFor="deadline" className="dark:text-gray-200">Prazo Desejado</Label>
-                    <select
-                      id="deadline"
-                      name="deadline"
-                      value={formData.deadline}
-                      onChange={handleInputChange}
-                      className="mt-1 w-full px-3 py-2 border border-gray-300 dark:border-gray-600 rounded-md focus:outline-none focus:ring-2 focus:ring-brand-blue dark:bg-gray-700 dark:text-gray-100"
-                    >
-                      <option value="">Selecione o prazo</option>
-                      <option value="urgente">Urgente (1-3 dias)</option>
-                      <option value="1-semana">1 semana</option>
-                      <option value="2-semanas">2 semanas</option>
-                      <option value="1-mes">1 mês</option>
-                      <option value="flexivel">Flexível</option>
-                    </select>
-                  </div>
+                <div>
+                  <Label htmlFor="deadline" className="dark:text-gray-200">Prazo Desejado</Label>
+                  <select
+                    id="deadline"
+                    name="deadline"
+                    value={formData.deadline}
+                    onChange={handleInputChange}
+                    className="mt-1 w-full px-3 py-2 border border-gray-300 dark:border-gray-600 rounded-md focus:outline-none focus:ring-2 focus:ring-brand-blue dark:bg-gray-700 dark:text-gray-100"
+                  >
+                    <option value="">Selecione o prazo</option>
+                    <option value="urgente">Urgente (1-3 dias)</option>
+                    <option value="1-semana">1 semana</option>
+                    <option value="2-semanas">2 semanas</option>
+                    <option value="1-mes">1 mês</option>
+                    <option value="flexivel">Flexível</option>
+                  </select>
                 </div>
 
                 <div>
@@ -525,7 +595,7 @@ Enviado via formulário do site 3DFPrint
                 </Button>
 
                 <p className="text-xs text-gray-500 dark:text-gray-400 text-center">
-                  Ao enviar este formulário, você será redirecionado para o WhatsApp para finalizar o envio dos arquivos.
+                  Sua solicitação será enviada automaticamente por email para flaviodfc@gmail.com e você será redirecionado para o WhatsApp para envio dos arquivos.
                 </p>
               </form>
             </CardContent>
