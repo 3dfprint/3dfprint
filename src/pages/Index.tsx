@@ -1,6 +1,7 @@
 import { useState, useEffect } from 'react';
 import { Button } from '@/components/ui/button';
 import { Card, CardContent } from '@/components/ui/card';
+import { Factory, Palette, Users, Building2, Settings, Lightbulb } from 'lucide-react';
 import Header from '@/components/Header';
 import Footer from '@/components/Footer';
 import ContactForm from '@/components/ContactForm';
@@ -97,9 +98,11 @@ const Index = () => {
           </div>
 
           <div className="grid md:grid-cols-2 lg:grid-cols-3 gap-8">
-            <Card className="hover:shadow-xl transition-shadow duration-300 border-t-4 border-t-brand-red dark:bg-gray-700 dark:border-gray-600">
+            <Card className="hover:shadow-xl transition-all duration-300 border-t-4 border-t-brand-red dark:bg-gray-700 dark:border-gray-600 group hover:scale-105">
               <CardContent className="p-6">
-                <div className="text-4xl mb-4">🏭</div>
+                <div className="w-16 h-16 bg-gradient-to-br from-brand-red to-red-600 rounded-2xl flex items-center justify-center mb-4 group-hover:scale-110 transition-transform duration-300">
+                  <Factory className="text-white" size={32} />
+                </div>
                 <h3 className="text-xl font-bold mb-3 text-gray-800 dark:text-gray-100">Prototipagem para PMEs</h3>
                 <p className="text-gray-600 dark:text-gray-300 mb-4">
                   Desenvolvimento rápido de protótipos funcionais para validação de conceitos e testes.
@@ -112,9 +115,11 @@ const Index = () => {
               </CardContent>
             </Card>
 
-            <Card className="hover:shadow-xl transition-shadow duration-300 border-t-4 border-t-brand-yellow dark:bg-gray-700 dark:border-gray-600">
+            <Card className="hover:shadow-xl transition-all duration-300 border-t-4 border-t-brand-yellow dark:bg-gray-700 dark:border-gray-600 group hover:scale-105">
               <CardContent className="p-6">
-                <div className="text-4xl mb-4">🎭</div>
+                <div className="w-16 h-16 bg-gradient-to-br from-brand-yellow to-yellow-600 rounded-2xl flex items-center justify-center mb-4 group-hover:scale-110 transition-transform duration-300">
+                  <Palette className="text-white" size={32} />
+                </div>
                 <h3 className="text-xl font-bold mb-3 text-gray-800 dark:text-gray-100">Props para Cosplay</h3>
                 <p className="text-gray-600 dark:text-gray-300 mb-4">
                   Criação de props únicos e detalhados para cosplayers e eventos.
@@ -127,9 +132,11 @@ const Index = () => {
               </CardContent>
             </Card>
 
-            <Card className="hover:shadow-xl transition-shadow duration-300 border-t-4 border-t-brand-blue dark:bg-gray-700 dark:border-gray-600">
+            <Card className="hover:shadow-xl transition-all duration-300 border-t-4 border-t-brand-blue dark:bg-gray-700 dark:border-gray-600 group hover:scale-105">
               <CardContent className="p-6">
-                <div className="text-4xl mb-4">🦸</div>
+                <div className="w-16 h-16 bg-gradient-to-br from-brand-blue to-blue-600 rounded-2xl flex items-center justify-center mb-4 group-hover:scale-110 transition-transform duration-300">
+                  <Users className="text-white" size={32} />
+                </div>
                 <h3 className="text-xl font-bold mb-3 text-gray-800 dark:text-gray-100">Action Figures</h3>
                 <p className="text-gray-600 dark:text-gray-300 mb-4">
                   Impressão de action figures personalizados com alta qualidade e detalhamento.
@@ -142,9 +149,11 @@ const Index = () => {
               </CardContent>
             </Card>
 
-            <Card className="hover:shadow-xl transition-shadow duration-300 border-t-4 border-t-brand-red dark:bg-gray-700 dark:border-gray-600">
+            <Card className="hover:shadow-xl transition-all duration-300 border-t-4 border-t-brand-red dark:bg-gray-700 dark:border-gray-600 group hover:scale-105">
               <CardContent className="p-6">
-                <div className="text-4xl mb-4">🏛️</div>
+                <div className="w-16 h-16 bg-gradient-to-br from-brand-red to-red-600 rounded-2xl flex items-center justify-center mb-4 group-hover:scale-110 transition-transform duration-300">
+                  <Building2 className="text-white" size={32} />
+                </div>
                 <h3 className="text-xl font-bold mb-3 text-gray-800 dark:text-gray-100">Réplicas</h3>
                 <p className="text-gray-600 dark:text-gray-300 mb-4">
                   Reprodução fiel de objetos históricos, artísticos ou decorativos.
@@ -157,9 +166,11 @@ const Index = () => {
               </CardContent>
             </Card>
 
-            <Card className="hover:shadow-xl transition-shadow duration-300 border-t-4 border-t-brand-yellow dark:bg-gray-700 dark:border-gray-600">
+            <Card className="hover:shadow-xl transition-all duration-300 border-t-4 border-t-brand-yellow dark:bg-gray-700 dark:border-gray-600 group hover:scale-105">
               <CardContent className="p-6">
-                <div className="text-4xl mb-4">⚙️</div>
+                <div className="w-16 h-16 bg-gradient-to-br from-brand-yellow to-yellow-600 rounded-2xl flex items-center justify-center mb-4 group-hover:scale-110 transition-transform duration-300">
+                  <Settings className="text-white" size={32} />
+                </div>
                 <h3 className="text-xl font-bold mb-3 text-gray-800 dark:text-gray-100">Peças Funcionais</h3>
                 <p className="text-gray-600 dark:text-gray-300 mb-4">
                   Produção de peças funcionais para reposição ou melhoria de equipamentos.
@@ -172,9 +183,11 @@ const Index = () => {
               </CardContent>
             </Card>
 
-            <Card className="hover:shadow-xl transition-shadow duration-300 border-t-4 border-t-brand-blue dark:bg-gray-700 dark:border-gray-600">
+            <Card className="hover:shadow-xl transition-all duration-300 border-t-4 border-t-brand-blue dark:bg-gray-700 dark:border-gray-600 group hover:scale-105">
               <CardContent className="p-6">
-                <div className="text-4xl mb-4">💡</div>
+                <div className="w-16 h-16 bg-gradient-to-br from-brand-blue to-blue-600 rounded-2xl flex items-center justify-center mb-4 group-hover:scale-110 transition-transform duration-300">
+                  <Lightbulb className="text-white" size={32} />
+                </div>
                 <h3 className="text-xl font-bold mb-3 text-gray-800 dark:text-gray-100">Projetos Customizados</h3>
                 <p className="text-gray-600 dark:text-gray-300 mb-4">
                   Sua imaginação é o limite! Desenvolvemos soluções únicas para suas necessidades.
