@@ -160,11 +160,32 @@ const ContactForm = () => {
     }
   };
 
+  // Dynamic mask based on input length
+  const getWhatsAppMask = (value: string) => {
+    const cleanValue = value.replace(/\D/g, '');
+    // If it has 11 digits, use mobile format (xx) 9xxxx-xxxx
+    // If it has 10 digits, use landline format (xx) xxxx-xxxx
+    if (cleanValue.length <= 10) {
+      return '(99) 9999-9999';
+    }
+    return '(99) 99999-9999';
+  };
+
   const validateWhatsApp = (whatsapp: string): boolean => {
     // Remove all non-numeric characters
     const cleanNumber = whatsapp.replace(/\D/g, '');
-    // Check if it has 11 digits (Brazilian mobile format: DDD + 9 digits)
-    return cleanNumber.length === 11 && cleanNumber.charAt(2) === '9';
+    
+    // Check if it has 10 digits (landline: DDD + 8 digits) or 11 digits (mobile: DDD + 9 digits)
+    if (cleanNumber.length === 10) {
+      // Landline format: DDD + 8 digits (first digit of phone number should be 2-5)
+      const phoneFirstDigit = cleanNumber.charAt(2);
+      return ['2', '3', '4', '5'].includes(phoneFirstDigit);
+    } else if (cleanNumber.length === 11) {
+      // Mobile format: DDD + 9 digits (third digit should be 9)
+      return cleanNumber.charAt(2) === '9';
+    }
+    
+    return false;
   };
 
   const sendEmail = async (templateParams: any) => {
@@ -190,7 +211,7 @@ const ContactForm = () => {
     if (!validateWhatsApp(formData.whatsapp)) {
       toast({
         title: "WhatsApp inválido",
-        description: "Por favor, insira um número de WhatsApp válido no formato (xx) 9xxxx-xxxx com DDD brasileiro",
+        description: "Por favor, insira um número válido: (xx) xxxx-xxxx para fixo ou (xx) 9xxxx-xxxx para celular",
         variant: "destructive",
       });
       return;
@@ -438,7 +459,7 @@ Enviado via formulário do site 3DFPrint
                   <div>
                     <Label htmlFor="whatsapp" className="dark:text-gray-200">WhatsApp *</Label>
                     <InputMask
-                      mask="(99) 99999-9999"
+                      mask={getWhatsAppMask(formData.whatsapp)}
                       value={formData.whatsapp}
                       onChange={handleInputChange}
                     >
@@ -449,12 +470,12 @@ Enviado via formulário do site 3DFPrint
                           name="whatsapp"
                           required
                           className="mt-1 dark:bg-gray-700 dark:border-gray-600 dark:text-gray-100"
-                          placeholder="(11) 99999-9999"
+                          placeholder="(11) 9999-9999 ou (11) 99999-9999"
                         />
                       )}
                     </InputMask>
                     <p className="text-xs text-gray-500 dark:text-gray-400 mt-1">
-                      Formato: (DDD) 9xxxx-xxxx - Ex: (11) 99999-9999
+                      Fixo: (xx) xxxx-xxxx | Celular: (xx) 9xxxx-xxxx
                     </p>
                   </div>
                   <div>
