@@ -74,10 +74,11 @@ const Index = () => {
             </div>
             <div className="relative">
               <div className="w-full h-96 bg-gradient-to-br from-brand-red/10 to-brand-blue/10 rounded-2xl flex items-center justify-center">
-                <div className="text-center">
-                  <div className="text-6xl mb-4">🖨️</div>
-                  <p className="text-gray-600">Logotipo será inserido aqui</p>
-                </div>
+                <img 
+                  src="/lovable-uploads/efc49af6-9b49-4eea-81a9-0c4f028a6af9.png" 
+                  alt="3DFPrint Logo" 
+                  className="w-80 h-auto"
+                />
               </div>
             </div>
           </div>

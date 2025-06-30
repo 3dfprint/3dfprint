@@ -19,11 +19,11 @@ const Header = () => {
       <div className="container mx-auto px-4">
         <div className="flex items-center justify-between h-16">
           <div className="flex items-center space-x-2">
-            <div className="text-2xl font-bold">
-              <span className="text-brand-red">3D</span>
-              <span className="text-brand-blue">F</span>
-              <span className="text-brand-yellow">Print</span>
-            </div>
+            <img 
+              src="/lovable-uploads/efc49af6-9b49-4eea-81a9-0c4f028a6af9.png" 
+              alt="3DFPrint Logo" 
+              className="h-10 w-auto"
+            />
           </div>
 
           {/* Desktop Navigation */}
