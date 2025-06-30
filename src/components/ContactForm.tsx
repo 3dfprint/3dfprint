@@ -348,7 +348,7 @@ Enviado via formulário do site 3DFPrint
                 </li>
                 <li className="flex items-center space-x-2">
                   <div className="w-2 h-2 bg-brand-yellow rounded-full"></div>
-                  <span>Equipe especializada e apaixonada ****</span>
+                  <span>Equipe especializada e apaixonada</span>
                 </li>
                 <li className="flex items-center space-x-2">
                   <div className="w-2 h-2 bg-brand-blue rounded-full"></div>
