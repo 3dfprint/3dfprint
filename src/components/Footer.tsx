@@ -19,7 +19,7 @@ const Footer = () => {
   };
 
   return (
-    <footer className="bg-gray-900 text-white py-12">
+    <footer className="bg-gray-900 dark:bg-gray-950 text-white py-12">
       <div className="container mx-auto px-4">
         <div className="grid md:grid-cols-3 gap-8 mb-8">
           {/* Logo e Descrição */}
@@ -29,7 +29,7 @@ const Footer = () => {
               <span className="text-brand-blue">F</span>
               <span className="text-brand-yellow">Print</span>
             </div>
-            <p className="text-gray-300 mb-4">
+            <p className="text-gray-300 dark:text-gray-400 mb-4">
               Transformando ideias em realidade através da impressão 3D. 
               Soluções profissionais e acessíveis para empresas e pessoas físicas.
             </p>
@@ -58,7 +58,7 @@ const Footer = () => {
           {/* Serviços */}
           <div>
             <h3 className="text-xl font-bold mb-4">Nossos Serviços</h3>
-            <ul className="space-y-2 text-gray-300">
+            <ul className="space-y-2 text-gray-300 dark:text-gray-400">
               <li>Prototipagem para PMEs</li>
               <li>Props para Cosplay</li>
               <li>Action Figures Personalizados</li>
@@ -70,7 +70,7 @@ const Footer = () => {
           {/* Contato */}
           <div>
             <h3 className="text-xl font-bold mb-4">Contato</h3>
-            <div className="space-y-2 text-gray-300">
+            <div className="space-y-2 text-gray-300 dark:text-gray-400">
               <p>📧 contato@3dfprint3d.com.br</p>
               <p>📱 (11) 91331-1780</p>
               <p>🤖 Fale com a Ana (IA) via WhatsApp</p>
@@ -78,8 +78,8 @@ const Footer = () => {
           </div>
         </div>
 
-        <div className="border-t border-gray-700 pt-8 text-center">
-          <p className="text-gray-400">
+        <div className="border-t border-gray-700 dark:border-gray-800 pt-8 text-center">
+          <p className="text-gray-400 dark:text-gray-500">
             © {currentYear} 3DFPrint. Todos os direitos reservados. 
             Feito com ❤️ pela equipe 3DFPrint.
           </p>

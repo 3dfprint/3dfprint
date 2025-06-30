@@ -49,13 +49,13 @@ const ContactForm = () => {
   };
 
   return (
-    <section id="contato" className="py-20 bg-gray-50">
+    <section id="contato" className="py-20 bg-gray-50 dark:bg-gray-900">
       <div className="container mx-auto px-4">
         <div className="text-center mb-12">
-          <h2 className="text-4xl font-bold text-gray-800 mb-4">
+          <h2 className="text-4xl font-bold text-gray-800 dark:text-gray-100 mb-4">
             Entre em <span className="text-brand-red">Contato</span>
           </h2>
-          <p className="text-xl text-gray-600 max-w-2xl mx-auto">
+          <p className="text-xl text-gray-600 dark:text-gray-300 max-w-2xl mx-auto">
             Pronto para transformar suas ideias em realidade? Fale conosco!
           </p>
         </div>
@@ -64,7 +64,7 @@ const ContactForm = () => {
           {/* Informações de Contato */}
           <div className="space-y-8">
             <div>
-              <h3 className="text-2xl font-bold text-gray-800 mb-6">
+              <h3 className="text-2xl font-bold text-gray-800 dark:text-gray-100 mb-6">
                 Fale Conosco
               </h3>
               <div className="space-y-4">
@@ -73,8 +73,8 @@ const ContactForm = () => {
                     <Mail className="text-white" size={20} />
                   </div>
                   <div>
-                    <p className="font-semibold text-gray-800">Email</p>
-                    <p className="text-gray-600">contato@3dfprint3d.com.br</p>
+                    <p className="font-semibold text-gray-800 dark:text-gray-100">Email</p>
+                    <p className="text-gray-600 dark:text-gray-300">contato@3dfprint3d.com.br</p>
                   </div>
                 </div>
                 <div className="flex items-center space-x-4">
@@ -82,18 +82,18 @@ const ContactForm = () => {
                     <Phone className="text-white" size={20} />
                   </div>
                   <div>
-                    <p className="font-semibold text-gray-800">WhatsApp</p>
-                    <p className="text-gray-600">(11) 91331-1780</p>
+                    <p className="font-semibold text-gray-800 dark:text-gray-100">WhatsApp</p>
+                    <p className="text-gray-600 dark:text-gray-300">(11) 91331-1780</p>
                   </div>
                 </div>
               </div>
             </div>
 
             <div>
-              <h4 className="text-xl font-bold text-gray-800 mb-4">
+              <h4 className="text-xl font-bold text-gray-800 dark:text-gray-100 mb-4">
                 Por que escolher a 3DFPrint?
               </h4>
-              <ul className="space-y-2 text-gray-600">
+              <ul className="space-y-2 text-gray-600 dark:text-gray-300">
                 <li className="flex items-center space-x-2">
                   <div className="w-2 h-2 bg-brand-red rounded-full"></div>
                   <span>Soluções profissionais e acessíveis</span>
@@ -115,9 +115,9 @@ const ContactForm = () => {
           </div>
 
           {/* Formulário */}
-          <Card>
+          <Card className="dark:bg-gray-800 dark:border-gray-700">
             <CardHeader>
-              <CardTitle className="text-2xl text-gray-800">
+              <CardTitle className="text-2xl text-gray-800 dark:text-gray-100">
                 Solicite seu Orçamento
               </CardTitle>
             </CardHeader>
@@ -125,18 +125,18 @@ const ContactForm = () => {
               <form onSubmit={handleSubmit} className="space-y-6">
                 <div className="grid md:grid-cols-2 gap-4">
                   <div>
-                    <Label htmlFor="name">Nome *</Label>
+                    <Label htmlFor="name" className="dark:text-gray-200">Nome *</Label>
                     <Input
                       id="name"
                       name="name"
                       value={formData.name}
                       onChange={handleInputChange}
                       required
-                      className="mt-1"
+                      className="mt-1 dark:bg-gray-700 dark:border-gray-600 dark:text-gray-100"
                     />
                   </div>
                   <div>
-                    <Label htmlFor="email">Email *</Label>
+                    <Label htmlFor="email" className="dark:text-gray-200">Email *</Label>
                     <Input
                       id="email"
                       name="email"
@@ -144,30 +144,30 @@ const ContactForm = () => {
                       value={formData.email}
                       onChange={handleInputChange}
                       required
-                      className="mt-1"
+                      className="mt-1 dark:bg-gray-700 dark:border-gray-600 dark:text-gray-100"
                     />
                   </div>
                 </div>
 
                 <div className="grid md:grid-cols-2 gap-4">
                   <div>
-                    <Label htmlFor="phone">Telefone</Label>
+                    <Label htmlFor="phone" className="dark:text-gray-200">Telefone</Label>
                     <Input
                       id="phone"
                       name="phone"
                       value={formData.phone}
                       onChange={handleInputChange}
-                      className="mt-1"
+                      className="mt-1 dark:bg-gray-700 dark:border-gray-600 dark:text-gray-100"
                     />
                   </div>
                   <div>
-                    <Label htmlFor="service">Serviço de Interesse</Label>
+                    <Label htmlFor="service" className="dark:text-gray-200">Serviço de Interesse</Label>
                     <select
                       id="service"
                       name="service"
                       value={formData.service}
                       onChange={handleInputChange}
-                      className="mt-1 w-full px-3 py-2 border border-gray-300 rounded-md focus:outline-none focus:ring-2 focus:ring-brand-blue"
+                      className="mt-1 w-full px-3 py-2 border border-gray-300 dark:border-gray-600 rounded-md focus:outline-none focus:ring-2 focus:ring-brand-blue dark:bg-gray-700 dark:text-gray-100"
                     >
                       <option value="">Selecione um serviço</option>
                       <option value="prototipagem">Prototipagem</option>
@@ -180,7 +180,7 @@ const ContactForm = () => {
                 </div>
 
                 <div>
-                  <Label htmlFor="message">Mensagem *</Label>
+                  <Label htmlFor="message" className="dark:text-gray-200">Mensagem *</Label>
                   <Textarea
                     id="message"
                     name="message"
@@ -188,7 +188,7 @@ const ContactForm = () => {
                     onChange={handleInputChange}
                     required
                     rows={4}
-                    className="mt-1"
+                    className="mt-1 dark:bg-gray-700 dark:border-gray-600 dark:text-gray-100"
                     placeholder="Descreva seu projeto ou dúvida..."
                   />
                 </div>
