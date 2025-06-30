@@ -205,7 +205,7 @@ const Index = () => {
           <div className="grid md:grid-cols-3 gap-8 max-w-4xl mx-auto">
             <Card className="text-center hover:shadow-xl transition-shadow duration-300">
               <CardContent className="p-6">
-                <div className="w-32 h-32 mx-auto mb-4 rounded-full overflow-hidden shadow-lg">
+                <div className="w-40 h-40 mx-auto mb-4 rounded-full overflow-hidden">
                   <img 
                     src="/lovable-uploads/flavio.png" 
                     alt="Flavio Del Fiol Costa" 
@@ -224,7 +224,7 @@ const Index = () => {
 
             <Card className="text-center hover:shadow-xl transition-shadow duration-300">
               <CardContent className="p-6">
-                <div className="w-32 h-32 mx-auto mb-4 rounded-full overflow-hidden shadow-lg">
+                <div className="w-40 h-40 mx-auto mb-4 rounded-full overflow-hidden">
                   <img 
                     src="/lovable-uploads/paula.png" 
                     alt="Paula Del Fiol Costa" 
@@ -242,7 +242,7 @@ const Index = () => {
 
             <Card className="text-center hover:shadow-xl transition-shadow duration-300">
               <CardContent className="p-6">
-                <div className="w-32 h-32 mx-auto mb-4 rounded-full overflow-hidden shadow-lg">
+                <div className="w-40 h-40 mx-auto mb-4 rounded-full overflow-hidden">
                   <img 
                     src="/lovable-uploads/lucas.png" 
                     alt="Lucas Del Fiol Costa" 
