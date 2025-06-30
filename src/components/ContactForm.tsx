@@ -7,7 +7,7 @@ import { Card, CardContent, CardHeader, CardTitle } from '@/components/ui/card';
 import { useToast } from '@/hooks/use-toast';
 import { Mail, Phone, Upload, X, AlertCircle } from 'lucide-react';
 import InputMask from 'react-input-mask';
-import emailjs from 'emailjs-com';
+import emailjs from '@emailjs/browser';
 
 interface FileWithPreview extends File {
   preview?: string;
@@ -30,11 +30,6 @@ const ContactForm = () => {
   const allowedFileTypes = ['.zip', '.3mf', '.jpg', '.jpeg', '.png', '.stl'];
   const maxFileSize = 50 * 1024 * 1024; // 50MB
   const maxFiles = 5;
-
-  // EmailJS configuration
-  const EMAILJS_SERVICE_ID = 'service_3dfprint';
-  const EMAILJS_TEMPLATE_ID = 'template_3dfprint';
-  const EMAILJS_USER_ID = 'user_3dfprint';
 
   const handleInputChange = (e: React.ChangeEvent<HTMLInputElement | HTMLTextAreaElement | HTMLSelectElement>) => {
     const { name, value } = e.target;
@@ -190,13 +185,15 @@ const ContactForm = () => {
 
   const sendEmail = async (templateParams: any) => {
     try {
-      // Initialize EmailJS (you would need to set up your EmailJS account)
+      // Initialize EmailJS with your public key
+      emailjs.init("YOUR_PUBLIC_KEY"); // Replace with your actual public key
+      
       const result = await emailjs.send(
-        EMAILJS_SERVICE_ID,
-        EMAILJS_TEMPLATE_ID,
-        templateParams,
-        EMAILJS_USER_ID
+        "YOUR_SERVICE_ID", // Replace with your service ID
+        "YOUR_TEMPLATE_ID", // Replace with your template ID
+        templateParams
       );
+      
       return result;
     } catch (error) {
       console.error('EmailJS Error:', error);
@@ -233,39 +230,15 @@ const ContactForm = () => {
         files_list: files.map(file => `${file.name} (${formatFileSize(file.size)})`).join('\n'),
         reply_to: formData.email,
         subject: `Nova Solicitação de Orçamento - ${formData.name}`,
+        current_date: new Date().toLocaleString('pt-BR'),
       };
 
-      // Send email
+      // Send email via EmailJS
       await sendEmail(templateParams);
-      
-      // Generate WhatsApp message for backup/immediate contact
-      const whatsappMessage = `
-🎯 *Nova Solicitação de Orçamento - 3DFPrint*
-
-👤 *Cliente:* ${formData.name}
-📧 *Email:* ${formData.email}
-📱 *WhatsApp:* ${formData.whatsapp}
-🛠️ *Serviço:* ${formData.service || 'Não especificado'}
-⏰ *Prazo:* ${formData.deadline || 'Não informado'}
-
-📝 *Mensagem:*
-${formData.message}
-
-📎 *Arquivos anexados:* ${files.length} arquivo(s)
-${files.map(file => `• ${file.name} (${formatFileSize(file.size)})`).join('\n')}
-
----
-✅ Email enviado automaticamente para flaviodfc@gmail.com
-Enviado via formulário do site 3DFPrint
-      `.trim();
-
-      // Open WhatsApp with the message
-      const encodedMessage = encodeURIComponent(whatsappMessage);
-      window.open(`https://wa.me/5511913311780?text=${encodedMessage}`, '_blank');
       
       toast({
         title: "Solicitação enviada com sucesso! 🎉",
-        description: "Email enviado para flaviodfc@gmail.com e WhatsApp aberto para envio dos arquivos.",
+        description: "Email enviado para flaviodfc@gmail.com. Entraremos em contato em breve!",
       });
       
       // Reset form
@@ -289,7 +262,7 @@ Enviado via formulário do site 3DFPrint
     } catch (error) {
       console.error('Error sending email:', error);
       
-      // Fallback to WhatsApp only
+      // Fallback to WhatsApp
       const whatsappMessage = `
 🎯 *Nova Solicitação de Orçamento - 3DFPrint*
 
@@ -314,8 +287,8 @@ Enviado via formulário do site 3DFPrint
       window.open(`https://wa.me/5511913311780?text=${encodedMessage}`, '_blank');
       
       toast({
-        title: "Solicitação enviada via WhatsApp",
-        description: "Houve um problema no envio do email, mas sua solicitação foi enviada via WhatsApp.",
+        title: "Erro no envio do email",
+        description: "Houve um problema no envio automático. Redirecionando para WhatsApp como alternativa.",
         variant: "destructive",
       });
     } finally {
@@ -602,7 +575,7 @@ Enviado via formulário do site 3DFPrint
                 </Button>
 
                 <p className="text-xs text-gray-500 dark:text-gray-400 text-center">
-                  Sua solicitação será enviada automaticamente por email para flaviodfc@gmail.com e você será redirecionado para o WhatsApp para envio dos arquivos.
+                  Sua solicitação será enviada automaticamente por email para flaviodfc@gmail.com.
                 </p>
               </form>
             </CardContent>
