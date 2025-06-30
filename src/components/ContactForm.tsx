@@ -186,11 +186,11 @@ const ContactForm = () => {
   const sendEmail = async (templateParams: any) => {
     try {
       // Initialize EmailJS with your public key
-      emailjs.init("YOUR_PUBLIC_KEY"); // Replace with your actual public key
+      emailjs.init("97K5ZQREsUKq0nJLh"); // Replace with your actual public key
       
       const result = await emailjs.send(
-        "YOUR_SERVICE_ID", // Replace with your service ID
-        "YOUR_TEMPLATE_ID", // Replace with your template ID
+        "service_79cs237", // Replace with your service ID
+        "template_3dfprint", // Replace with your template ID
         templateParams
       );
       
