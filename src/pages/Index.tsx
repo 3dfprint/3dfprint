@@ -205,8 +205,12 @@ const Index = () => {
           <div className="grid md:grid-cols-3 gap-8 max-w-4xl mx-auto">
             <Card className="text-center hover:shadow-xl transition-shadow duration-300">
               <CardContent className="p-6">
-                <div className="w-24 h-24 bg-gradient-to-br from-brand-red to-red-600 rounded-full mx-auto mb-4 flex items-center justify-center text-white text-2xl font-bold">
-                  FC
+                <div className="w-32 h-32 mx-auto mb-4 rounded-full overflow-hidden border-4 border-brand-red shadow-lg">
+                  <img 
+                    src="/lovable-uploads/flavio.png" 
+                    alt="Flavio Del Fiol Costa" 
+                    className="w-full h-full object-cover"
+                  />
                 </div>
                 <h3 className="text-xl font-bold mb-2 text-gray-800">Flavio Del Fiol Costa</h3>
                 <p className="text-brand-red font-semibold mb-3">CTO & Co-Fundador</p>
@@ -220,8 +224,12 @@ const Index = () => {
 
             <Card className="text-center hover:shadow-xl transition-shadow duration-300">
               <CardContent className="p-6">
-                <div className="w-24 h-24 bg-gradient-to-br from-brand-yellow to-yellow-600 rounded-full mx-auto mb-4 flex items-center justify-center text-white text-2xl font-bold">
-                  PC
+                <div className="w-32 h-32 mx-auto mb-4 rounded-full overflow-hidden border-4 border-brand-yellow shadow-lg">
+                  <img 
+                    src="/lovable-uploads/paula.png" 
+                    alt="Paula Del Fiol Costa" 
+                    className="w-full h-full object-cover"
+                  />
                 </div>
                 <h3 className="text-xl font-bold mb-2 text-gray-800">Paula Del Fiol Costa</h3>
                 <p className="text-brand-yellow font-semibold mb-3">Diretora Criativa</p>
@@ -234,8 +242,12 @@ const Index = () => {
 
             <Card className="text-center hover:shadow-xl transition-shadow duration-300">
               <CardContent className="p-6">
-                <div className="w-24 h-24 bg-gradient-to-br from-brand-blue to-blue-600 rounded-full mx-auto mb-4 flex items-center justify-center text-white text-2xl font-bold">
-                  LC
+                <div className="w-32 h-32 mx-auto mb-4 rounded-full overflow-hidden border-4 border-brand-blue shadow-lg">
+                  <img 
+                    src="/lovable-uploads/lucas.png" 
+                    alt="Lucas Del Fiol Costa" 
+                    className="w-full h-full object-cover"
+                  />
                 </div>
                 <h3 className="text-xl font-bold mb-2 text-gray-800">Lucas Del Fiol Costa</h3>
                 <p className="text-brand-blue font-semibold mb-3">Engenheiro de Software</p>
