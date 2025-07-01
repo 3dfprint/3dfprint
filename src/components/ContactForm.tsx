@@ -175,7 +175,7 @@ const ContactForm = () => {
 
         Cliente: ${formData.name}
         Email: ${formData.email}
-        WhatsApp: ${formData.whatsapp}
+        WhatsApp: ${formData.whatsapp || 'Não informado'}
         Serviço: ${formData.service || 'Não especificado'}
         Prazo: ${formData.deadline || 'Não informado'}
 
@@ -408,7 +408,7 @@ const ContactForm = () => {
 
                 <div className="grid md:grid-cols-2 gap-4">
                   <div>
-                    <Label htmlFor="whatsapp" className="dark:text-gray-200">WhatsApp *</Label>
+                    <Label htmlFor="whatsapp" className="dark:text-gray-200">WhatsApp</Label>
                     <InputMask
                       mask={getWhatsAppMask(formData.whatsapp)}
                       value={formData.whatsapp}
@@ -419,7 +419,6 @@ const ContactForm = () => {
                           {...inputProps}
                           id="whatsapp"
                           name="whatsapp"
-                          required
                           className="mt-1 dark:bg-gray-700 dark:border-gray-600 dark:text-gray-100"
                           placeholder="(11) 9999-9999 ou (11) 99999-9999"
                         />
