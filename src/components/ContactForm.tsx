@@ -55,7 +55,7 @@ const ContactForm = () => {
     // Para números de 11 dígitos, o terceiro dígito deve ser 9 (celular)
     if (cleanPhone.length === 11) {
       const thirdDigit = cleanPhone.charAt(2);
-      if (thirdDigit !== '9') {
+      if (thirdDigit !== '*') {
         return false;
       }
     }
