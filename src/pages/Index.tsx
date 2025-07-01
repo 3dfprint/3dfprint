@@ -4,7 +4,6 @@ import { Card, CardContent } from '@/components/ui/card';
 import { Factory, Palette, Users, Building2, Settings, Lightbulb } from 'lucide-react';
 import Header from '@/components/Header';
 import Footer from '@/components/Footer';
-import ContactForm from '@/components/ContactForm';
 import WhatsAppWidget from '@/components/WhatsAppWidget';
 
 const Index = () => {
@@ -42,11 +41,11 @@ const Index = () => {
               </p>
               <div className="flex flex-col sm:flex-row gap-4">
                 <Button 
-                  onClick={() => scrollToSection('contato')}
+                  onClick={() => window.open('https://wa.me/5511913311780', '_blank')}
                   size="lg"
                   className="bg-brand-red hover:bg-red-700 text-white px-8 py-4 text-lg"
                 >
-                  Solicitar Orçamento Grátis
+                  Fale Conosco no WhatsApp
                 </Button>
                 <Button 
                   onClick={() => scrollToSection('servicos')}
@@ -292,25 +291,24 @@ const Index = () => {
           </p>
           <div className="flex flex-col sm:flex-row gap-4 justify-center">
             <Button 
-              onClick={() => scrollToSection('contato')}
+              onClick={() => window.open('https://wa.me/5511913311780', '_blank')}
               size="lg"
               className="bg-white text-brand-red hover:bg-gray-100 px-8 py-4 text-lg font-semibold"
             >
-              Solicitar Orçamento
+              Fale Conosco no WhatsApp
             </Button>
             <Button 
-              onClick={() => window.open('https://wa.me/5511913311780', '_blank')}
+              onClick={() => scrollToSection('servicos')}
               variant="outline"
               size="lg"
               className="border-white text-white hover:bg-white hover:text-brand-blue px-8 py-4 text-lg font-semibold"
             >
-              Falar no WhatsApp
+              Conheça Nossos Serviços
             </Button>
           </div>
         </div>
       </section>
 
-      <ContactForm />
       <Footer />
     </div>
   );
