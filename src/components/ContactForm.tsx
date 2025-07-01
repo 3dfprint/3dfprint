@@ -7,7 +7,6 @@ import { Card, CardContent, CardHeader, CardTitle } from '@/components/ui/card';
 import { useToast } from '@/hooks/use-toast';
 import { Mail, Phone, Upload, X, AlertCircle } from 'lucide-react';
 import InputMask from 'react-input-mask';
-import emailjs from '@emailjs/browser';
 
 interface FileWithPreview extends File {
   preview?: string;
@@ -166,81 +165,96 @@ const ContactForm = () => {
     return '(99) 99999-9999';
   };
 
-  const validateWhatsApp = (whatsapp: string): boolean => {
-    // Remove all non-numeric characters
-    const cleanNumber = whatsapp.replace(/\D/g, '');
-    
-    // Check if it has 10 digits (landline: DDD + 8 digits) or 11 digits (mobile: DDD + 9 digits)
-    if (cleanNumber.length === 10) {
-      // Landline format: DDD + 8 digits (first digit of phone number should be 2-5)
-      const phoneFirstDigit = cleanNumber.charAt(2);
-      return ['2', '3', '4', '5'].includes(phoneFirstDigit);
-    } else if (cleanNumber.length === 11) {
-      // Mobile format: DDD + 9 digits (third digit should be 9)
-      return cleanNumber.charAt(2) === '9';
-    }
-    
-    return false;
-  };
-
-  const sendEmail = async (templateParams: any) => {
-    try {
-      // Initialize EmailJS with your public key
-      emailjs.init("97K5ZQREsUKq0nJLh"); // Replace with your actual public key
-      
-      const result = await emailjs.send(
-        "service_79cs237", // Replace with your service ID
-        "template_3dfprint", // Replace with your template ID
-        templateParams
-      );
-      
-      return result;
-    } catch (error) {
-      console.error('EmailJS Error:', error);
-      throw error;
-    }
-  };
-
-  const handleSubmit = async (e: React.FormEvent) => {
-    e.preventDefault();
-    
-    // Validate WhatsApp
-    if (!validateWhatsApp(formData.whatsapp)) {
-      toast({
-        title: "WhatsApp inválido",
-        description: "Por favor, insira um número válido: (xx) xxxx-xxxx para fixo ou (xx) 9xxxx-xxxx para celular",
-        variant: "destructive",
-      });
-      return;
-    }
-
+  const sendEmail = async () => {
     setIsSubmitting(true);
 
     try {
-      // Prepare email template parameters
-      const templateParams = {
-        to_email: 'flaviodfc@gmail.com',
-        from_name: formData.name,
-        from_email: formData.email,
-        whatsapp: formData.whatsapp,
-        service: formData.service || 'Não especificado',
-        deadline: formData.deadline || 'Não informado',
-        message: formData.message,
-        files_count: files.length,
-        files_list: files.map(file => `${file.name} (${formatFileSize(file.size)})`).join('\n'),
-        reply_to: formData.email,
-        subject: `Nova Solicitação de Orçamento - ${formData.name}`,
-        current_date: new Date().toLocaleString('pt-BR'),
+      // Prepare the email content
+      const emailContent = `
+        Nova Solicitação de Orçamento - 3DFPrint
+
+        Cliente: ${formData.name}
+        Email: ${formData.email}
+        WhatsApp: ${formData.whatsapp}
+        Serviço: ${formData.service || 'Não especificado'}
+        Prazo: ${formData.deadline || 'Não informado'}
+
+        Mensagem:
+        ${formData.message}
+
+        Arquivos anexados: ${files.length} arquivo(s)
+        ${files.map(file => `• ${file.name} (${formatFileSize(file.size)})`).join('\n')}
+      `;
+
+      // Convert files to base64 for attachment
+      const attachments = await Promise.all(
+        files.map(async (file) => {
+          return new Promise<string>((resolve, reject) => {
+            const reader = new FileReader();
+            reader.onloadend = () => {
+              const base64String = reader.result as string;
+              const base64Content = base64String.split(',')[1]; // Extract the base64 data
+              resolve(base64Content);
+            };
+            reader.onerror = reject;
+            reader.readAsDataURL(file);
+          }).then(base64Content => ({
+            filename: file.name,
+            content: base64Content,
+            encoding: 'base64',
+          }));
+        })
+      );
+
+      // Prepare the email payload for Gmail API
+      const emailPayload = {
+        raw: window.btoa(
+          unescape(
+            encodeURIComponent(
+              `Content-Type: multipart/mixed; boundary="foo_bar_baz"\n` +
+              `MIME-Version: 1.0\n` +
+              `To: flaviodfc@gmail.com\n` + // Destination email
+              `From: ${formData.email}\n` +
+              `Subject: Nova Solicitação de Orçamento - ${formData.name}\n\n` +
+              `--foo_bar_baz\n` +
+              `Content-Type: text/plain; charset="UTF-8"\n` +
+              `MIME-Version: 1.0\n` +
+              `Content-Transfer-Encoding: 7bit\n\n` +
+              `${emailContent}\n\n` +
+              attachments.map(attachment =>
+                `--foo_bar_baz\n` +
+                `Content-Type: application/octet-stream; name="${attachment.filename}"\n` +
+                `MIME-Version: 1.0\n` +
+                `Content-Transfer-Encoding: base64\n` +
+                `Content-Disposition: attachment; filename="${attachment.filename}"\n\n` +
+                `${attachment.content}\n\n`
+              ).join('') +
+              `--foo_bar_baz--`
+            )
+          )
+        ).replace(/\+/g, '-').replace(/\//g, '_').replace(/=+$/, '')
       };
 
-      // Send email via EmailJS
-      await sendEmail(templateParams);
-      
+      // Send the email using Gmail API
+      const accessToken = 'AIzaSyCoGxlFdgLhEK6_pctsztZRxSw_armWFMI'; // Replace with your actual access token
+      const response = await fetch('https://gmail.googleapis.com/gmail/v1/users/me/messages/send', {
+        method: 'POST',
+        headers: {
+          'Authorization': `Bearer ${accessToken}`,
+          'Content-Type': 'application/json'
+        },
+        body: JSON.stringify(emailPayload)
+      });
+
+      if (!response.ok) {
+        throw new Error(`Failed to send email: ${response.status} ${response.statusText}`);
+      }
+
       toast({
         title: "Solicitação enviada com sucesso! 🎉",
-        description: "Email enviado para flaviodfc@gmail.com. Entraremos em contato em breve!",
+        description: "Sua solicitação foi enviada. Entraremos em contato em breve!",
       });
-      
+
       // Reset form
       setFormData({ 
         name: '', 
@@ -258,37 +272,12 @@ const ContactForm = () => {
         }
       });
       setFiles([]);
-      
-    } catch (error) {
+
+    } catch (error: any) {
       console.error('Error sending email:', error);
-      
-      // Fallback to WhatsApp
-      const whatsappMessage = `
-🎯 *Nova Solicitação de Orçamento - 3DFPrint*
-
-👤 *Cliente:* ${formData.name}
-📧 *Email:* ${formData.email}
-📱 *WhatsApp:* ${formData.whatsapp}
-🛠️ *Serviço:* ${formData.service || 'Não especificado'}
-⏰ *Prazo:* ${formData.deadline || 'Não informado'}
-
-📝 *Mensagem:*
-${formData.message}
-
-📎 *Arquivos anexados:* ${files.length} arquivo(s)
-${files.map(file => `• ${file.name} (${formatFileSize(file.size)})`).join('\n')}
-
----
-⚠️ Erro no envio automático do email - enviando via WhatsApp
-Enviado via formulário do site 3DFPrint
-      `.trim();
-
-      const encodedMessage = encodeURIComponent(whatsappMessage);
-      window.open(`https://wa.me/5511913311780?text=${encodedMessage}`, '_blank');
-      
       toast({
         title: "Erro no envio do email",
-        description: "Houve um problema no envio automático. Redirecionando para WhatsApp como alternativa.",
+        description: `Houve um problema no envio. Por favor, tente novamente mais tarde. ${error.message}`,
         variant: "destructive",
       });
     } finally {
@@ -387,7 +376,10 @@ Enviado via formulário do site 3DFPrint
               </CardTitle>
             </CardHeader>
             <CardContent>
-              <form onSubmit={handleSubmit} className="space-y-6">
+              <form onSubmit={async (e) => {
+                  e.preventDefault();
+                  await sendEmail();
+                }} className="space-y-6">
                 <div className="grid md:grid-cols-2 gap-4">
                   <div>
                     <Label htmlFor="name" className="dark:text-gray-200">Nome *</Label>
@@ -575,7 +567,7 @@ Enviado via formulário do site 3DFPrint
                 </Button>
 
                 <p className="text-xs text-gray-500 dark:text-gray-400 text-center">
-                  Sua solicitação será enviada automaticamente por email para flaviodfc@gmail.com.
+                  Sua solicitação será enviada automaticamente.
                 </p>
               </form>
             </CardContent>
