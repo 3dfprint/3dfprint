@@ -35,6 +35,34 @@ const ContactForm = () => {
     setFormData(prev => ({ ...prev, [name]: value }));
   };
 
+  // Validação de número de telefone brasileiro
+  const validateBrazilianPhone = (phone: string): boolean => {
+    // Remove todos os caracteres não numéricos
+    const cleanPhone = phone.replace(/\D/g, '');
+    
+    // Verifica se tem 10 ou 11 dígitos (formato brasileiro)
+    if (cleanPhone.length !== 10 && cleanPhone.length !== 11) {
+      return false;
+    }
+    
+    // Verifica se começa com código de área válido (11-99)
+    const areaCode = cleanPhone.substring(0, 2);
+    const areaCodeNum = parseInt(areaCode);
+    if (areaCodeNum < 11 || areaCodeNum > 99) {
+      return false;
+    }
+    
+    // Para números de 11 dígitos, o terceiro dígito deve ser 9 (celular)
+    if (cleanPhone.length === 11) {
+      const thirdDigit = cleanPhone.charAt(2);
+      if (thirdDigit !== '9') {
+        return false;
+      }
+    }
+    
+    return true;
+  };
+
   const validateFile = (file: File): string | null => {
     const fileExtension = '.' + file.name.split('.').pop()?.toLowerCase();
     
@@ -169,13 +197,24 @@ const ContactForm = () => {
     setIsSubmitting(true);
 
     try {
+      // Validar WhatsApp antes de enviar
+      if (!validateBrazilianPhone(formData.whatsapp)) {
+        toast({
+          title: "WhatsApp inválido",
+          description: "Por favor, insira um número de telefone brasileiro válido no formato (xx) xxxxx-xxxx ou (xx) xxxx-xxxx",
+          variant: "destructive",
+        });
+        setIsSubmitting(false);
+        return;
+      }
+
       // Prepare the email content
       const emailContent = `
         Nova Solicitação de Orçamento - 3DFPrint
 
         Cliente: ${formData.name}
         Email: ${formData.email}
-        WhatsApp: ${formData.whatsapp || 'Não informado'}
+        WhatsApp: ${formData.whatsapp}
         Serviço: ${formData.service || 'Não especificado'}
         Prazo: ${formData.deadline || 'Não informado'}
 
@@ -408,7 +447,7 @@ const ContactForm = () => {
 
                 <div className="grid md:grid-cols-2 gap-4">
                   <div>
-                    <Label htmlFor="whatsapp" className="dark:text-gray-200">WhatsApp</Label>
+                    <Label htmlFor="whatsapp" className="dark:text-gray-200">WhatsApp *</Label>
                     <InputMask
                       mask={getWhatsAppMask(formData.whatsapp)}
                       value={formData.whatsapp}
@@ -419,11 +458,15 @@ const ContactForm = () => {
                           {...inputProps}
                           id="whatsapp"
                           name="whatsapp"
+                          required
                           className="mt-1 dark:bg-gray-700 dark:border-gray-600 dark:text-gray-100"
                           placeholder="(11) 9999-9999 ou (11) 99999-9999"
                         />
                       )}
                     </InputMask>
+                    <p className="text-xs text-gray-500 dark:text-gray-400 mt-1">
+                      Formato: (xx) xxxxx-xxxx ou (xx) xxxx-xxxx
+                    </p>
                   </div>
                   <div>
                     <Label htmlFor="service" className="dark:text-gray-200">Serviço de Interesse</Label>
