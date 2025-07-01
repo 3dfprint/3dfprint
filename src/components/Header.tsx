@@ -54,10 +54,12 @@ const Header = () => {
             </button>
             <ThemeToggle />
             <Button 
-              onClick={() => scrollToSection('contato')}
+              asChild
               className="bg-brand-red hover:bg-red-700 text-white"
             >
-              Orçamento Grátis
+              <a href="https://wa.me/5511913311780" target="_blank" rel="noopener noreferrer">
+                Orçamento Grátis
+              </a>
             </Button>
           </nav>
 
@@ -102,10 +104,12 @@ const Header = () => {
                 Contato
               </button>
               <Button 
-                onClick={() => scrollToSection('contato')}
+                asChild
                 className="bg-brand-red hover:bg-red-700 text-white w-fit"
               >
-                Orçamento Grátis
+                <a href="https://wa.me/5511913311780" target="_blank" rel="noopener noreferrer">
+                  Orçamento Grátis
+                </a>
               </Button>
             </nav>
           </div>
