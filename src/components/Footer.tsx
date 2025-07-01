@@ -4,7 +4,7 @@ const Footer = () => {
   const currentYear = new Date().getFullYear();
 
   const handleInstagramClick = () => {
-    window.open('https://instagram.com/3dfprint', '_blank');
+    window.open('https://instagram.com/3dfprint3d', '_blank');
   };
 
   const handleEmailClick = () => {
