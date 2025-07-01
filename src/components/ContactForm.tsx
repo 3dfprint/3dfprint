@@ -275,7 +275,7 @@ const ContactForm = () => {
       };
 
       // Send the email using Gmail API
-      const accessToken = 'AIzaSyCoGxlFdgLhEK6_pctsztZRxSw_armWFMI'; // Replace with your actual access token
+      const accessToken = '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'; // Replace with your actual access token
       const response = await fetch('https://gmail.googleapis.com/gmail/v1/users/me/messages/send', {
         method: 'POST',
         headers: {
