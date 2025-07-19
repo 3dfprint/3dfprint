@@ -1,4 +1,5 @@
 import { Instagram, Mail, Phone } from 'lucide-react';
+import { Facebook } from 'lucide-react';
 
 const Footer = () => {
   const currentYear = new Date().getFullYear();
@@ -8,7 +9,7 @@ const Footer = () => {
   };
 
   const handleEmailClick = () => {
-    window.location.href = 'mailto:contato@3dfprint3d.com.br';
+    window.open('https://www.facebook.com/3dfprint3d', '_blank');
   };
 
   const handleWhatsAppClick = () => {
@@ -41,10 +42,10 @@ const Footer = () => {
                 <Instagram size={20} />
               </button>
               <button
-                onClick={handleEmailClick}
+                onClick={handleFacebookClick}
                 className="w-10 h-10 bg-brand-blue rounded-full flex items-center justify-center hover:bg-blue-700 transition-colors"
               >
-                <Mail size={20} />
+                <Facebook size={20} />
               </button>
               <button
                 onClick={handleWhatsAppClick}
