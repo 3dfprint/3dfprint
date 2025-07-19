@@ -8,7 +8,7 @@ const Footer = () => {
     window.open('https://instagram.com/3dfprint3d', '_blank');
   };
 
-  const handleEmailClick = () => {
+  const handleFacebookClick = () => {
     window.open('https://www.facebook.com/3dfprint3d', '_blank');
   };
 
