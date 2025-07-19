@@ -1,0 +1,22 @@
+<svg width="32" height="32" viewBox="0 0 32 32" fill="none" xmlns="http://www.w3.org/2000/svg">
+  <!-- Background circle -->
+  <circle cx="16" cy="16" r="16" fill="#2563EB"/>
+  
+  <!-- 3D cube representation -->
+  <g transform="translate(8, 6)">
+    <!-- Front face -->
+    <path d="M0 8 L8 8 L8 16 L0 16 Z" fill="#DC2626"/>
+    <!-- Top face -->
+    <path d="M0 8 L4 4 L12 4 L8 8 Z" fill="#FBBF24"/>
+    <!-- Right face -->
+    <path d="M8 8 L12 4 L12 12 L8 16 Z" fill="#DC2626" opacity="0.8"/>
+    
+    <!-- 3D text effect -->
+    <text x="2" y="13" font-family="Arial, sans-serif" font-size="6" font-weight="bold" fill="white">3D</text>
+  </g>
+  
+  <!-- Print dots pattern -->
+  <circle cx="24" cy="8" r="1" fill="#FBBF24"/>
+  <circle cx="26" cy="10" r="1" fill="#FBBF24"/>
+  <circle cx="24" cy="12" r="1" fill="#FBBF24"/>
+</svg>
