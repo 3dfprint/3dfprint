@@ -326,11 +326,11 @@ const Index = () => {
 
           <div className="text-center mt-12">
             <Button 
-              onClick={() => window.open('https://wa.me/5511913311780', '_blank')}
+              onClick={() => window.open('https://instagram.com/3dfprint3d', '_blank')}
               size="lg"
               className="bg-brand-red hover:bg-red-700 text-white px-8 py-4 text-lg font-semibold"
             >
-              Ver Mais Projetos no WhatsApp
+              Ver Mais Projetos no Instagram
             </Button>
           </div>
         </div>
