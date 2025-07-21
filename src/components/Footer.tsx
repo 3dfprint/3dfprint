@@ -1,8 +1,14 @@
 import { Instagram, Mail, Phone } from 'lucide-react';
 import { Facebook } from 'lucide-react';
+import { useState } from 'react';
+import CookieConsent from './CookieConsent';
+import PrivacyPolicyModal from './PrivacyPolicyModal';
+import TermsOfServiceModal from './TermsOfServiceModal';
 
 const Footer = () => {
   const currentYear = new Date().getFullYear();
+  const [isPrivacyModalOpen, setIsPrivacyModalOpen] = useState(false);
+  const [isTermsModalOpen, setIsTermsModalOpen] = useState(false);
 
   const handleInstagramClick = () => {
     window.open('https://instagram.com/3dfprint3d', '_blank');
@@ -20,9 +26,21 @@ const Footer = () => {
   };
 
   return (
-    <footer className="bg-gray-900 dark:bg-gray-950 text-white py-12">
+    <>
+      <CookieConsent onOpenPrivacyPolicy={() => setIsPrivacyModalOpen(true)} />
+      <PrivacyPolicyModal 
+        isOpen={isPrivacyModalOpen} 
+        onClose={() => setIsPrivacyModalOpen(false)} 
+      />
+      <TermsOfServiceModal 
+        isOpen={isTermsModalOpen} 
+        onClose={() => setIsTermsModalOpen(false)} 
+      />
+      
+      <footer className="bg-gray-900 dark:bg-gray-950 text-white py-12">
       <div className="container mx-auto px-4">
         <div className="grid md:grid-cols-3 gap-8 mb-8">
+        <div className="grid md:grid-cols-4 gap-8 mb-8">
           {/* Logo e Descrição */}
           <div>
             <div className="text-3xl font-bold mb-4">
@@ -75,7 +93,29 @@ const Footer = () => {
               <p>📧 contato@3dfprint3d.com.br</p>
               <p><a href="https://wa.me/5511913311780" target="_Blank">🤖 Fale com a Ana (IA) via WhatsApp</a></p>
               <p>📱 (11) 91331-1780</p>
-						</div>
+            </div>
+          </div>
+
+          {/* Links Legais */}
+          <div>
+            <h3 className="text-xl font-bold mb-4">Informações Legais</h3>
+            <div className="space-y-2 text-gray-300 dark:text-gray-400">
+              <button
+                onClick={() => setIsPrivacyModalOpen(true)}
+                className="block hover:text-white transition-colors text-left"
+              >
+                Política de Privacidade
+              </button>
+              <button
+                onClick={() => setIsTermsModalOpen(true)}
+                className="block hover:text-white transition-colors text-left"
+              >
+                Termos de Uso
+              </button>
+              <p className="text-sm">
+                CNPJ: 00.000.000/0001-00
+              </p>
+            </div>
           </div>
         </div>
 
@@ -86,7 +126,8 @@ const Footer = () => {
           </p>
         </div>
       </div>
-    </footer>
+      </footer>
+    </>
   );
 };
 
