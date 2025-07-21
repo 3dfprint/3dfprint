@@ -17,7 +17,7 @@ const TermsOfServiceModal = ({ isOpen, onClose }: TermsOfServiceModalProps) => {
       <DialogContent className="max-w-4xl max-h-[80vh]">
         <DialogHeader>
           <DialogTitle className="text-2xl font-bold text-gray-800 dark:text-gray-100">
-            Termos de Uso
+            📜 Termos de Uso - 3DFPrint
           </DialogTitle>
         </DialogHeader>
         <ScrollArea className="h-[60vh] pr-4">
@@ -208,7 +208,7 @@ const TermsOfServiceModal = ({ isOpen, onClose }: TermsOfServiceModalProps) => {
               <div className="bg-gray-50 dark:bg-gray-800 p-4 rounded-lg">
                 <p><strong>E-mail:</strong> contato@3dfprint3d.com.br</p>
                 <p><strong>WhatsApp:</strong> (11) 91331-1780</p>
-                <p><strong>Última atualização:</strong> Janeiro de 2025</p>
+                <p><strong>Última atualização:</strong> Julho de 2025</p>
               </div>
             </section>
           </div>
