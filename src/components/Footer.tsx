@@ -90,8 +90,8 @@ const Footer = () => {
             <h3 className="text-xl font-bold mb-4">Contato</h3>
             <div className="space-y-2 text-gray-300 dark:text-gray-400">
               <p>📧 contato@3dfprint3d.com.br</p>
-              <p><a href="https://wa.me/5511913311780" target="_Blank">🤖 Fale com a Ana (IA) via WhatsApp</p>
-              <p>📱 (11) 91331-1780</a></p>
+              <p><a href="https://wa.me/5511913311780" target="_Blank">🤖 Fale com a Ana (IA) via WhatsApp</a></p>
+              <p><a href="https://wa.me/5511913311780" target="_Blank">📱 (11) 91331-1780</a></p>
             </div>
           </div>
 
