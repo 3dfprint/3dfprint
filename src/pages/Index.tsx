@@ -219,7 +219,7 @@ const Index = () => {
             <div className="group relative overflow-hidden rounded-2xl shadow-lg hover:shadow-2xl transition-all duration-500">
               <div className="aspect-square bg-gradient-to-br from-blue-100 to-blue-200 dark:from-blue-900 dark:to-blue-800 flex items-center justify-center">
                 <img 
-                  src="https://images.pexels.com/photos/190574/pexels-photo-190574.jpeg?auto=compress&cs=tinysrgb&w=800" 
+                  src="/portfolio/1.jpg?auto=compress&cs=tinysrgb&w=800" 
                   alt="Protótipo Automotivo" 
                   className="w-full h-full object-cover group-hover:scale-110 transition-transform duration-500"
                 />
