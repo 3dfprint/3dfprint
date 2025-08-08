@@ -322,6 +322,115 @@ const Index = () => {
                 </div>
               </div>
             </div>
+
+            {/* Projeto 1 - Protótipo Automotivo */}
+            <div className="group relative overflow-hidden rounded-2xl shadow-lg hover:shadow-2xl transition-all duration-500">
+              <div className="aspect-square bg-gradient-to-br from-blue-100 to-blue-200 dark:from-blue-900 dark:to-blue-800 flex items-center justify-center">
+                <img 
+                  src="/portfolio/7.jpg?auto=compress&cs=tinysrgb&w=800" 
+                  alt="Protótipo Automotivo" 
+                  className="w-full h-full object-cover group-hover:scale-110 transition-transform duration-500"
+                />
+              </div>
+              <div className="absolute inset-0 bg-gradient-to-t from-black/70 via-transparent to-transparent opacity-0 group-hover:opacity-100 transition-opacity duration-300">
+                <div className="absolute bottom-4 left-4 right-4 text-white">
+                  <h3 className="text-lg font-bold mb-2">Protótipo Automotivo</h3>
+                  <p className="text-sm opacity-90">Desenvolvimento de protótipo funcional para indústria automotiva</p>
+                  <span className="inline-block mt-2 px-3 py-1 bg-brand-blue rounded-full text-xs font-medium">Prototipagem</span>
+                </div>
+              </div>
+            </div>
+
+            {/* Projeto 2 - Armadura Cosplay */}
+            <div className="group relative overflow-hidden rounded-2xl shadow-lg hover:shadow-2xl transition-all duration-500">
+              <div className="aspect-square bg-gradient-to-br from-red-100 to-red-200 dark:from-red-900 dark:to-red-800 flex items-center justify-center">
+                <img 
+                  src="/portfolio/8.jpg?auto=compress&cs=tinysrgb&w=800" 
+                  alt="Armadura Cosplay" 
+                  className="w-full h-full object-cover group-hover:scale-110 transition-transform duration-500"
+                />
+              </div>
+              <div className="absolute inset-0 bg-gradient-to-t from-black/70 via-transparent to-transparent opacity-0 group-hover:opacity-100 transition-opacity duration-300">
+                <div className="absolute bottom-4 left-4 right-4 text-white">
+                  <h3 className="text-lg font-bold mb-2">Armadura Medieval</h3>
+                  <p className="text-sm opacity-90">Conjunto completo de armadura medieval para cosplay</p>
+                  <span className="inline-block mt-2 px-3 py-1 bg-brand-red rounded-full text-xs font-medium">Cosplay</span>
+                </div>
+              </div>
+            </div>
+
+            {/* Projeto 3 - Action Figure */}
+            <div className="group relative overflow-hidden rounded-2xl shadow-lg hover:shadow-2xl transition-all duration-500">
+              <div className="aspect-square bg-gradient-to-br from-yellow-100 to-yellow-200 dark:from-yellow-900 dark:to-yellow-800 flex items-center justify-center">
+                <img 
+                  src="/portfolio/9.jpg?auto=compress&cs=tinysrgb&w=800" 
+                  alt="Action Figure Personalizado" 
+                  className="w-full h-full object-cover group-hover:scale-110 transition-transform duration-500"
+                />
+              </div>
+              <div className="absolute inset-0 bg-gradient-to-t from-black/70 via-transparent to-transparent opacity-0 group-hover:opacity-100 transition-opacity duration-300">
+                <div className="absolute bottom-4 left-4 right-4 text-white">
+                  <h3 className="text-lg font-bold mb-2">Action Figure Personalizado</h3>
+                  <p className="text-sm opacity-90">Miniatura detalhada baseada em personagem original</p>
+                  <span className="inline-block mt-2 px-3 py-1 bg-brand-yellow rounded-full text-xs font-medium">Action Figures</span>
+                </div>
+              </div>
+            </div>
+
+            {/* Projeto 4 - Réplica Histórica */}
+            <div className="group relative overflow-hidden rounded-2xl shadow-lg hover:shadow-2xl transition-all duration-500">
+              <div className="aspect-square bg-gradient-to-br from-green-100 to-green-200 dark:from-green-900 dark:to-green-800 flex items-center justify-center">
+                <img 
+                  src="/portfolio/10.jpg?auto=compress&cs=tinysrgb&w=800" 
+                  alt="Réplica Histórica" 
+                  className="w-full h-full object-cover group-hover:scale-110 transition-transform duration-500"
+                />
+              </div>
+              <div className="absolute inset-0 bg-gradient-to-t from-black/70 via-transparent to-transparent opacity-0 group-hover:opacity-100 transition-opacity duration-300">
+                <div className="absolute bottom-4 left-4 right-4 text-white">
+                  <h3 className="text-lg font-bold mb-2">Réplica Histórica</h3>
+                  <p className="text-sm opacity-90">Reprodução fiel de artefato arqueológico</p>
+                  <span className="inline-block mt-2 px-3 py-1 bg-green-500 rounded-full text-xs font-medium">Réplicas</span>
+                </div>
+              </div>
+            </div>
+
+            {/* Projeto 5 - Peça Funcional */}
+            <div className="group relative overflow-hidden rounded-2xl shadow-lg hover:shadow-2xl transition-all duration-500">
+              <div className="aspect-square bg-gradient-to-br from-purple-100 to-purple-200 dark:from-purple-900 dark:to-purple-800 flex items-center justify-center">
+                <img 
+                  src="/portfolio/11.jpg?auto=compress&cs=tinysrgb&w=800" 
+                  alt="Peça Funcional" 
+                  className="w-full h-full object-cover group-hover:scale-110 transition-transform duration-500"
+                />
+              </div>
+              <div className="absolute inset-0 bg-gradient-to-t from-black/70 via-transparent to-transparent opacity-0 group-hover:opacity-100 transition-opacity duration-300">
+                <div className="absolute bottom-4 left-4 right-4 text-white">
+                  <h3 className="text-lg font-bold mb-2">Peça de Reposição</h3>
+                  <p className="text-sm opacity-90">Componente funcional para equipamento industrial</p>
+                  <span className="inline-block mt-2 px-3 py-1 bg-purple-500 rounded-full text-xs font-medium">Peças Funcionais</span>
+                </div>
+              </div>
+            </div>
+
+            {/* Projeto 6 - Projeto Customizado */}
+            <div className="group relative overflow-hidden rounded-2xl shadow-lg hover:shadow-2xl transition-all duration-500">
+              <div className="aspect-square bg-gradient-to-br from-indigo-100 to-indigo-200 dark:from-indigo-900 dark:to-indigo-800 flex items-center justify-center">
+                <img 
+                  src="/portfolio/12.jpg?auto=compress&cs=tinysrgb&w=800" 
+                  alt="Projeto Customizado" 
+                  className="w-full h-full object-cover group-hover:scale-110 transition-transform duration-500"
+                />
+              </div>
+              <div className="absolute inset-0 bg-gradient-to-t from-black/70 via-transparent to-transparent opacity-0 group-hover:opacity-100 transition-opacity duration-300">
+                <div className="absolute bottom-4 left-4 right-4 text-white">
+                  <h3 className="text-lg font-bold mb-2">Projeto Arquitetônico</h3>
+                  <p className="text-sm opacity-90">Maquete detalhada de projeto arquitetônico</p>
+                  <span className="inline-block mt-2 px-3 py-1 bg-indigo-500 rounded-full text-xs font-medium">Customizado</span>
+                </div>
+              </div>
+            </div>
+            
           </div>
 
           <div className="text-center mt-12">
