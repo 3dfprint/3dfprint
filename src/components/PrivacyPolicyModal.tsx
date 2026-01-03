@@ -23,9 +23,9 @@ const PrivacyPolicyModal = ({ isOpen, onClose }: PrivacyPolicyModalProps) => {
         <ScrollArea className="h-[60vh] pr-4">
           <div className="space-y-6 text-gray-600 dark:text-gray-300">
         		<section>
-              <p className="mb-4">A 3DFPrint é de propriedade da DEL FIOL TECH LTDA, inscrita no CNPJ sob nº 15.543.532/0001-42, inscrição estadual isenta, com sede à Estrada Municipal Teodor Condiev 970, Sala 502 - Jardim Marchissolo - CEP: 13171-105 - Sumaré - SP.</p>
-              <p className="mb-4">A DEL FIOL TECH LTDA adota o compromisso de respeitar a privacidade de seus usuários. Ao fornecer informações pessoais e ao acessar o nosso site e whatsapp, o Usuário automaticamente concorda com as regras estabelecidas no presente termo de Política de Privacidade, motivo pelo qual recomendamos a sua leitura antes de prosseguir na navegação ou na contratação de nossos serviços.</p>
-              <p className="mb-4">A DEL FIOL TECH LTDA segue as orientações da LEI GERAL DE PROTEÇÃO DE DADOS (LGPD) – LEI Nº 13.709/18</p>
+              <p className="mb-4">A 3DFPrint é de propriedade da 63.301.599 FLAVIO DEL FIOL COSTA, inscrita no CNPJ sob nº 63.301.599/0001-13, inscrição estadual isenta, com sede à R. Joaquim Távora, 1383 - CEP: 04015-003 - São Paulo - SP.</p>
+              <p className="mb-4">A 3DFPrint adota o compromisso de respeitar a privacidade de seus usuários. Ao fornecer informações pessoais e ao acessar o nosso site e whatsapp, o Usuário automaticamente concorda com as regras estabelecidas no presente termo de Política de Privacidade, motivo pelo qual recomendamos a sua leitura antes de prosseguir na navegação ou na contratação de nossos serviços.</p>
+              <p className="mb-4">A 3DFPrint segue as orientações da LEI GERAL DE PROTEÇÃO DE DADOS (LGPD) – LEI Nº 13.709/18</p>
               <p className="mb-4">Esta política tem como objetivo esclarecer como as suas informações são coletadas, usadas e protegidas ao utilizar os serviços da 3DFPrint.</p>
             </section>
             <section>
@@ -169,7 +169,7 @@ const PrivacyPolicyModal = ({ isOpen, onClose }: PrivacyPolicyModalProps) => {
               <div className="bg-gray-50 dark:bg-gray-800 p-4 rounded-lg">
                 <p><strong>E-mail:</strong> contato@3dfprint3d.com.br</p>
                 <p><strong>WhatsApp:</strong> (11) 91331-1780</p>
-                <p><strong>Última atualização:</strong> Julho de 2025</p>
+                <p><strong>Última atualização:</strong> Janeiro de 2026</p>
               </div>
             </section>
           </div>
