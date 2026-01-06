@@ -233,48 +233,48 @@ const Index = () => {
               </div>
             </div>
 
-            {/* Projeto 2 - Réplica */}
+            {/* Projeto 2 - Action Figure */}
             <div className="group relative overflow-hidden rounded-2xl shadow-lg hover:shadow-2xl transition-all duration-500">
               <div className="aspect-square bg-gradient-to-br from-red-100 to-red-200 dark:from-red-900 dark:to-red-800 flex items-center justify-center">
                 <img 
-                  src="/portfolio/2.jpg?auto=compress&cs=tinysrgb&w=800" 
-                  alt="Réplica Nuka Cola" 
+                  src="/portfolio/2.png?auto=compress&cs=tinysrgb&w=800" 
+                  alt="Action Figure" 
                   className="w-full h-full object-cover group-hover:scale-110 transition-transform duration-500"
                 />
               </div>
               <div className="absolute inset-0 bg-gradient-to-t from-black/70 via-transparent to-transparent opacity-0 group-hover:opacity-100 transition-opacity duration-300">
                 <div className="absolute bottom-4 left-4 right-4 text-white">
-                  <h3 className="text-lg font-bold mb-2">Réplica Nuka Cola</h3>
-                  <p className="text-sm opacity-90">Peça em resina transparente pintada à mão</p>
-                  <span className="inline-block mt-2 px-3 py-1 bg-brand-red rounded-full text-xs font-medium">Cosplay</span>
+                  <h3 className="text-lg font-bold mb-2">Boneco Articulado do jogo R.E.P.O.</h3>
+                  <p className="text-sm opacity-90">Action figure articulado, peça feita em filamento ABS, impressão colorida</p>
+                  <span className="inline-block mt-2 px-3 py-1 bg-brand-red rounded-full text-xs font-medium">Action Figure</span>
                 </div>
               </div>
             </div>
 
-            {/* Projeto 3 - Action Figure */}
+            {/* Projeto 3 - Réplicas */}
             <div className="group relative overflow-hidden rounded-2xl shadow-lg hover:shadow-2xl transition-all duration-500">
               <div className="aspect-square bg-gradient-to-br from-yellow-100 to-yellow-200 dark:from-yellow-900 dark:to-yellow-800 flex items-center justify-center">
                 <img 
-                  src="/portfolio/3.jpg?auto=compress&cs=tinysrgb&w=800" 
-                  alt="Action Figure Personalizado" 
+                  src="/portfolio/3.png?auto=compress&cs=tinysrgb&w=800" 
+                  alt="Réplicas" 
                   className="w-full h-full object-cover group-hover:scale-110 transition-transform duration-500"
                 />
               </div>
               <div className="absolute inset-0 bg-gradient-to-t from-black/70 via-transparent to-transparent opacity-0 group-hover:opacity-100 transition-opacity duration-300">
                 <div className="absolute bottom-4 left-4 right-4 text-white">
-                  <h3 className="text-lg font-bold mb-2">Action Figure</h3>
-                  <p className="text-sm opacity-90">Power Armor Fallout</p>
-                  <span className="inline-block mt-2 px-3 py-1 bg-brand-yellow rounded-full text-xs font-medium">Action Figures</span>
+                  <h3 className="text-lg font-bold mb-2">Barril do jogo Donkey Kong</h3>
+                  <p className="text-sm opacity-90">Porta lápis estilo barril com logo, peça feita em resina, pintada à mão</p>
+                  <span className="inline-block mt-2 px-3 py-1 bg-brand-yellow rounded-full text-xs font-medium">Réplicas</span>
                 </div>
               </div>
             </div>
 
-            {/* Projeto 4 - Cosplay Prop */}
+            {/* Projeto 4 - Réplicas */}
             <div className="group relative overflow-hidden rounded-2xl shadow-lg hover:shadow-2xl transition-all duration-500">
               <div className="aspect-square bg-gradient-to-br from-green-100 to-green-200 dark:from-green-900 dark:to-green-800 flex items-center justify-center">
                 <img 
-                  src="/portfolio/4.jpg?auto=compress&cs=tinysrgb&w=800" 
-                  alt="Cosplay Prop" 
+                  src="/portfolio/3.png?auto=compress&cs=tinysrgb&w=800" 
+                  alt="Réplicas" 
                   className="w-full h-full object-cover group-hover:scale-110 transition-transform duration-500"
                 />
               </div>
@@ -282,7 +282,7 @@ const Index = () => {
                 <div className="absolute bottom-4 left-4 right-4 text-white">
                   <h3 className="text-lg font-bold mb-2">Cosplay Prop</h3>
                   <p className="text-sm opacity-90">Ankh Tomb Raider IV em resina pintado à mão</p>
-                  <span className="inline-block mt-2 px-3 py-1 bg-green-500 rounded-full text-xs font-medium">Cosplay</span>
+                  <span className="inline-block mt-2 px-3 py-1 bg-green-500 rounded-full text-xs font-medium">Réplicas</span>
                 </div>
               </div>
             </div>
