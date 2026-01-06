@@ -431,223 +431,242 @@ const Index = () => {
               </div>
             </div>
             
-            {/* Projeto 1 - Action Figures */}
+            {/* Projeto 13 - Luminárias */}
             <div className="group relative overflow-hidden rounded-2xl shadow-lg hover:shadow-2xl transition-all duration-500">
               <div className="aspect-square bg-gradient-to-br from-blue-100 to-blue-200 dark:from-blue-900 dark:to-blue-800 flex items-center justify-center">
                 <img 
-                  src="/portfolio/1.png?auto=compress&cs=tinysrgb&w=800" 
-                  alt="Action Figure" 
+                  src="/portfolio/13.png?auto=compress&cs=tinysrgb&w=800" 
+                  alt="Luminárias" 
                   className="w-full h-full object-cover group-hover:scale-110 transition-transform duration-500"
                 />
               </div>
               <div className="absolute inset-0 bg-gradient-to-t from-black/70 via-transparent to-transparent opacity-0 group-hover:opacity-100 transition-opacity duration-300">
                 <div className="absolute bottom-4 left-4 right-4 text-white">
-                  <h3 className="text-lg font-bold mb-2">Bonecos e réplicas da série de jogos Fallout</h3>
-                  <p className="text-sm opacity-90">Action figure da Power Armor, Fallout Boy estilo bubblehead e réplica da Nuka Cola</p>
-                  <span className="inline-block mt-2 px-3 py-1 bg-brand-blue rounded-full text-xs font-medium">Action Figures</span>
+                  <h3 className="text-lg font-bold mb-2">Logotipo Harley Davidson</h3>
+                  <p className="text-sm opacity-90">Luminária da Harley Davidson, peça feita em filamento ABS, impressão colorida com aplicação de led</p>
+                  <span className="inline-block mt-2 px-3 py-1 bg-brand-blue rounded-full text-xs font-medium">Luminárias</span>
                 </div>
               </div>
             </div>
 
-            {/* Projeto 2 - Action Figure */}
+            {/* Projeto 14 - Luminárias */}
             <div className="group relative overflow-hidden rounded-2xl shadow-lg hover:shadow-2xl transition-all duration-500">
               <div className="aspect-square bg-gradient-to-br from-red-100 to-red-200 dark:from-red-900 dark:to-red-800 flex items-center justify-center">
                 <img 
-                  src="/portfolio/2.png?auto=compress&cs=tinysrgb&w=800" 
-                  alt="Action Figure" 
+                  src="/portfolio/14.png?auto=compress&cs=tinysrgb&w=800" 
+                  alt="Luminárias" 
                   className="w-full h-full object-cover group-hover:scale-110 transition-transform duration-500"
                 />
               </div>
               <div className="absolute inset-0 bg-gradient-to-t from-black/70 via-transparent to-transparent opacity-0 group-hover:opacity-100 transition-opacity duration-300">
                 <div className="absolute bottom-4 left-4 right-4 text-white">
-                  <h3 className="text-lg font-bold mb-2">Boneco Articulado do jogo R.E.P.O.</h3>
-                  <p className="text-sm opacity-90">Action figure articulado, peça feita em filamento ABS, impressão colorida</p>
-                  <span className="inline-block mt-2 px-3 py-1 bg-brand-red rounded-full text-xs font-medium">Action Figure</span>
+                  <h3 className="text-lg font-bold mb-2">Abóbora de Halloween</h3>
+                  <p className="text-sm opacity-90">Luminária decorativa de abóbora estilo caveira mexicana, temática de Halloween, peça feita em filamento ABS com aplicação de fio de led</p>
+                  <span className="inline-block mt-2 px-3 py-1 bg-brand-red rounded-full text-xs font-medium">Luminárias</span>
                 </div>
               </div>
             </div>
 
-            {/* Projeto 3 - Réplicas */}
+            {/* Projeto 15 - Toys */}
             <div className="group relative overflow-hidden rounded-2xl shadow-lg hover:shadow-2xl transition-all duration-500">
               <div className="aspect-square bg-gradient-to-br from-yellow-100 to-yellow-200 dark:from-yellow-900 dark:to-yellow-800 flex items-center justify-center">
                 <img 
-                  src="/portfolio/3.png?auto=compress&cs=tinysrgb&w=800" 
-                  alt="Réplicas" 
+                  src="/portfolio/15.png?auto=compress&cs=tinysrgb&w=800" 
+                  alt="Toys" 
                   className="w-full h-full object-cover group-hover:scale-110 transition-transform duration-500"
                 />
               </div>
               <div className="absolute inset-0 bg-gradient-to-t from-black/70 via-transparent to-transparent opacity-0 group-hover:opacity-100 transition-opacity duration-300">
                 <div className="absolute bottom-4 left-4 right-4 text-white">
-                  <h3 className="text-lg font-bold mb-2">Barril do jogo Donkey Kong</h3>
-                  <p className="text-sm opacity-90">Porta lápis estilo barril com logo, peça feita em resina, pintada à mão</p>
-                  <span className="inline-block mt-2 px-3 py-1 bg-brand-yellow rounded-full text-xs font-medium">Réplicas</span>
+                  <h3 className="text-lg font-bold mb-2">Fidget toys para terapias</h3>
+                  <p className="text-sm opacity-90">Indicados para ansiedade, TDAH, TEA e depressão, feito em filamento ABS</p>
+                  <span className="inline-block mt-2 px-3 py-1 bg-brand-yellow rounded-full text-xs font-medium">Toys</span>
                 </div>
               </div>
             </div>
 
-            {/* Projeto 4 - Cosplay Prop */}
+            {/* Projeto 16 - Toys */}
             <div className="group relative overflow-hidden rounded-2xl shadow-lg hover:shadow-2xl transition-all duration-500">
               <div className="aspect-square bg-gradient-to-br from-green-100 to-green-200 dark:from-green-900 dark:to-green-800 flex items-center justify-center">
                 <img 
-                  src="/portfolio/4.png?auto=compress&cs=tinysrgb&w=800" 
-                  alt="Cosplay Prop" 
+                  src="/portfolio/16.png?auto=compress&cs=tinysrgb&w=800" 
+                  alt="Toys" 
                   className="w-full h-full object-cover group-hover:scale-110 transition-transform duration-500"
                 />
               </div>
               <div className="absolute inset-0 bg-gradient-to-t from-black/70 via-transparent to-transparent opacity-0 group-hover:opacity-100 transition-opacity duration-300">
                 <div className="absolute bottom-4 left-4 right-4 text-white">
-                  <h3 className="text-lg font-bold mb-2">Artefatos do jogo Tomb Raider</h3>
-                  <p className="text-sm opacity-90">Artefatos da Adaga de Xian - Tomb Raider II e Ankh - Tomb Raider IV em resina pintado à mão com aplicação de tecido aveludado e arame</p>
-                  <span className="inline-block mt-2 px-3 py-1 bg-green-500 rounded-full text-xs font-medium">Cosplay Prop</span>
+                  <h3 className="text-lg font-bold mb-2">Bio da cara preta</h3>
+                  <p className="text-sm opacity-90">Peças personalizadas para um brinquedo do desenho Boi da Cara Preta, feito em filamento ABS, pintada à mão</p>
+                  <span className="inline-block mt-2 px-3 py-1 bg-green-500 rounded-full text-xs font-medium">Toys</span>
                 </div>
               </div>
             </div>
 
-            {/* Projeto 5 - Action Figure */}
+            {/* Projeto 17 - Acessórios */}
             <div className="group relative overflow-hidden rounded-2xl shadow-lg hover:shadow-2xl transition-all duration-500">
               <div className="aspect-square bg-gradient-to-br from-purple-100 to-purple-200 dark:from-purple-900 dark:to-purple-800 flex items-center justify-center">
                 <img 
-                  src="/portfolio/5.png?auto=compress&cs=tinysrgb&w=800" 
-                  alt="Action Figure" 
+                  src="/portfolio/17.png?auto=compress&cs=tinysrgb&w=800" 
+                  alt="Acessórios" 
                   className="w-full h-full object-cover group-hover:scale-110 transition-transform duration-500"
                 />
               </div>
               <div className="absolute inset-0 bg-gradient-to-t from-black/70 via-transparent to-transparent opacity-0 group-hover:opacity-100 transition-opacity duration-300">
                 <div className="absolute bottom-4 left-4 right-4 text-white">
-                  <h3 className="text-lg font-bold mb-2">Bonecas customizadas do jogo Tomb Raider</h3>
-                  <p className="text-sm opacity-90">Action figures da Lara Croft customizadas com diferentes roupas e cenários, floresta e urbana, feitas em resina, pintadas à mão com elementos adicionais estilo diorama</p>
-                  <span className="inline-block mt-2 px-3 py-1 bg-purple-500 rounded-full text-xs font-medium">Action Figure</span>
+                  <h3 className="text-lg font-bold mb-2">Grip para controle de video game</h3>
+                  <p className="text-sm opacity-90">Suporte para auxiliar na ergonomia do seu controle, peça feita em filamento ABS</p>
+                  <span className="inline-block mt-2 px-3 py-1 bg-purple-500 rounded-full text-xs font-medium">Acessórios</span>
                 </div>
               </div>
             </div>
 
-            {/* Projeto 6 - Chaveiros */}
+            {/* Projeto 18 - Acessórios */}
             <div className="group relative overflow-hidden rounded-2xl shadow-lg hover:shadow-2xl transition-all duration-500">
               <div className="aspect-square bg-gradient-to-br from-indigo-100 to-indigo-200 dark:from-indigo-900 dark:to-indigo-800 flex items-center justify-center">
                 <img 
-                  src="/portfolio/6.png?auto=compress&cs=tinysrgb&w=800" 
-                  alt="Chaveiros" 
+                  src="/portfolio/18.png?auto=compress&cs=tinysrgb&w=800" 
+                  alt="Acessórios" 
                   className="w-full h-full object-cover group-hover:scale-110 transition-transform duration-500"
                 />
               </div>
               <div className="absolute inset-0 bg-gradient-to-t from-black/70 via-transparent to-transparent opacity-0 group-hover:opacity-100 transition-opacity duration-300">
                 <div className="absolute bottom-4 left-4 right-4 text-white">
-                  <h3 className="text-lg font-bold mb-2">Chaveiros da mini Lara Croft em Fortnite</h3>
-                  <p className="text-sm opacity-90">Peça exclusiva, desenhada em 3D, feita em resina, pintada à mão com aplicações de argola para chaveiro</p>
-                  <span className="inline-block mt-2 px-3 py-1 bg-indigo-500 rounded-full text-xs font-medium">Chaveiros</span>
+                  <h3 className="text-lg font-bold mb-2">Suporte para video game portátil</h3>
+                  <p className="text-sm opacity-90">Suporte para guardar seu video game portátil, peça feita em filamento ABS</p>
+                  <span className="inline-block mt-2 px-3 py-1 bg-indigo-500 rounded-full text-xs font-medium">Acessórios</span>
                 </div>
               </div>
             </div>
 
-            {/* Projeto 7 - Utilidades */}
+            {/* Projeto 19 - Suportes */}
             <div className="group relative overflow-hidden rounded-2xl shadow-lg hover:shadow-2xl transition-all duration-500">
               <div className="aspect-square bg-gradient-to-br from-blue-100 to-blue-200 dark:from-blue-900 dark:to-blue-800 flex items-center justify-center">
                 <img 
-                  src="/portfolio/7.png?auto=compress&cs=tinysrgb&w=800" 
+                  src="/portfolio/19.png?auto=compress&cs=tinysrgb&w=800" 
+                  alt="Suportes" 
+                  className="w-full h-full object-cover group-hover:scale-110 transition-transform duration-500"
+                />
+              </div>
+              <div className="absolute inset-0 bg-gradient-to-t from-black/70 via-transparent to-transparent opacity-0 group-hover:opacity-100 transition-opacity duration-300">
+                <div className="absolute bottom-4 left-4 right-4 text-white">
+                  <h3 className="text-lg font-bold mb-2">Apoios para telas e notebooks</h3>
+                  <p className="text-sm opacity-90">Suportes para auxiliar na posição de equipamentos eletrônicos, peças feitas em filamento ABS</p>
+                  <span className="inline-block mt-2 px-3 py-1 bg-brand-blue rounded-full text-xs font-medium">Suportes</span>
+                </div>
+              </div>
+            </div>
+
+            {/* Projeto 20 - Utilidades */}
+            <div className="group relative overflow-hidden rounded-2xl shadow-lg hover:shadow-2xl transition-all duration-500">
+              <div className="aspect-square bg-gradient-to-br from-red-100 to-red-200 dark:from-red-900 dark:to-red-800 flex items-center justify-center">
+                <img 
+                  src="/portfolio/20.png?auto=compress&cs=tinysrgb&w=800" 
                   alt="Utilidades" 
                   className="w-full h-full object-cover group-hover:scale-110 transition-transform duration-500"
                 />
               </div>
               <div className="absolute inset-0 bg-gradient-to-t from-black/70 via-transparent to-transparent opacity-0 group-hover:opacity-100 transition-opacity duration-300">
                 <div className="absolute bottom-4 left-4 right-4 text-white">
-                  <h3 className="text-lg font-bold mb-2">Vasinhos de Star Wars</h3>
-                  <p className="text-sm opacity-90">Vasinhos do Darth Vader, Storm Trooper e C3PO estilo geométrico (low poly) em filamento ABS</p>
-                  <span className="inline-block mt-2 px-3 py-1 bg-brand-blue rounded-full text-xs font-medium">Utilidades</span>
+                  <h3 className="text-lg font-bold mb-2">Vasinhos geométricos</h3>
+                  <p className="text-sm opacity-90">Vasinhos variados em filamento ABS</p>
+                  <span className="inline-block mt-2 px-3 py-1 bg-brand-red rounded-full text-xs font-medium">Utilidades</span>
                 </div>
               </div>
             </div>
 
-            {/* Projeto 8 - Decorativos */}
-            <div className="group relative overflow-hidden rounded-2xl shadow-lg hover:shadow-2xl transition-all duration-500">
-              <div className="aspect-square bg-gradient-to-br from-red-100 to-red-200 dark:from-red-900 dark:to-red-800 flex items-center justify-center">
-                <img 
-                  src="/portfolio/8.png?auto=compress&cs=tinysrgb&w=800" 
-                  alt="Decorativos" 
-                  className="w-full h-full object-cover group-hover:scale-110 transition-transform duration-500"
-                />
-              </div>
-              <div className="absolute inset-0 bg-gradient-to-t from-black/70 via-transparent to-transparent opacity-0 group-hover:opacity-100 transition-opacity duration-300">
-                <div className="absolute bottom-4 left-4 right-4 text-white">
-                  <h3 className="text-lg font-bold mb-2">Keyblade do jogo Kingdom Hearts</h3>
-                  <p className="text-sm opacity-90">Decoração personalizada, peça feita em filamento ABS, pintada à mão com aplicações de corrente metálica</p>
-                  <span className="inline-block mt-2 px-3 py-1 bg-brand-red rounded-full text-xs font-medium">Decorativos</span>
-                </div>
-              </div>
-            </div>
-
-            {/* Projeto 9 - Cosmakes */}
+            {/* Projeto 21 - Utilidades */}
             <div className="group relative overflow-hidden rounded-2xl shadow-lg hover:shadow-2xl transition-all duration-500">
               <div className="aspect-square bg-gradient-to-br from-yellow-100 to-yellow-200 dark:from-yellow-900 dark:to-yellow-800 flex items-center justify-center">
                 <img 
-                  src="/portfolio/9.png?auto=compress&cs=tinysrgb&w=800" 
-                  alt="Cosmakes" 
-                  className="w-full h-full object-cover group-hover:scale-110 transition-transform duration-500"
-                />
-              </div>
-              <div className="absolute inset-0 bg-gradient-to-t from-black/70 via-transparent to-transparent opacity-0 group-hover:opacity-100 transition-opacity duration-300">
-                <div className="absolute bottom-4 left-4 right-4 text-white">
-                  <h3 className="text-lg font-bold mb-2">Acessórios personalizados para cosplay</h3>
-                  <p className="text-sm opacity-90">Peças personalizadas para cosplayers do desenho Cavalo de Fogo e do jogo League o Legends, peças feitas em filamento ABS e resina, pintadas à mão com aplicações de cordão e fecho</p>
-                  <span className="inline-block mt-2 px-3 py-1 bg-brand-yellow rounded-full text-xs font-medium">Cosmakes</span>
-                </div>
-              </div>
-            </div>
-
-            {/* Projeto 10 - Logomarcas */}
-            <div className="group relative overflow-hidden rounded-2xl shadow-lg hover:shadow-2xl transition-all duration-500">
-              <div className="aspect-square bg-gradient-to-br from-green-100 to-green-200 dark:from-green-900 dark:to-green-800 flex items-center justify-center">
-                <img 
-                  src="/portfolio/10.png?auto=compress&cs=tinysrgb&w=800" 
-                  alt="Logomarcas" 
-                  className="w-full h-full object-cover group-hover:scale-110 transition-transform duration-500"
-                />
-              </div>
-              <div className="absolute inset-0 bg-gradient-to-t from-black/70 via-transparent to-transparent opacity-0 group-hover:opacity-100 transition-opacity duration-300">
-                <div className="absolute bottom-4 left-4 right-4 text-white">
-                  <h3 className="text-lg font-bold mb-2">Logotipo das empresa Keller Williams</h3>
-                  <p className="text-sm opacity-90">Decoração personalizada para empresas, peça feita em filamento ABS</p>
-                  <span className="inline-block mt-2 px-3 py-1 bg-green-500 rounded-full text-xs font-medium">Logomarcas</span>
-                </div>
-              </div>
-            </div>
-
-            {/* Projeto 11 - Utilidades */}
-            <div className="group relative overflow-hidden rounded-2xl shadow-lg hover:shadow-2xl transition-all duration-500">
-              <div className="aspect-square bg-gradient-to-br from-purple-100 to-purple-200 dark:from-purple-900 dark:to-purple-800 flex items-center justify-center">
-                <img 
-                  src="/portfolio/11.png?auto=compress&cs=tinysrgb&w=800" 
+                  src="/portfolio/21.png?auto=compress&cs=tinysrgb&w=800" 
                   alt="Utilidades" 
                   className="w-full h-full object-cover group-hover:scale-110 transition-transform duration-500"
                 />
               </div>
               <div className="absolute inset-0 bg-gradient-to-t from-black/70 via-transparent to-transparent opacity-0 group-hover:opacity-100 transition-opacity duration-300">
                 <div className="absolute bottom-4 left-4 right-4 text-white">
-                  <h3 className="text-lg font-bold mb-2">Pecinhas de jogo de tabuleiro</h3>
-                  <p className="text-sm opacity-90">Pecinhas para jogo de tabuleiro customizadas em filamento ABS</p>
-                  <span className="inline-block mt-2 px-3 py-1 bg-purple-500 rounded-full text-xs font-medium">Utilidades</span>
+                  <h3 className="text-lg font-bold mb-2">Vasos de caveiras</h3>
+                  <p className="text-sm opacity-90">Vasos em estilo calaveras e steam punk em filamento ABS</p>
+                  <span className="inline-block mt-2 px-3 py-1 bg-brand-yellow rounded-full text-xs font-medium">Utilidades</span>
                 </div>
               </div>
             </div>
 
-            {/* Projeto 12 - Personalizados */}
+            {/* Projeto 22 - Customizados */}
             <div className="group relative overflow-hidden rounded-2xl shadow-lg hover:shadow-2xl transition-all duration-500">
-              <div className="aspect-square bg-gradient-to-br from-indigo-100 to-indigo-200 dark:from-indigo-900 dark:to-indigo-800 flex items-center justify-center">
+              <div className="aspect-square bg-gradient-to-br from-green-100 to-green-200 dark:from-green-900 dark:to-green-800 flex items-center justify-center">
                 <img 
-                  src="/portfolio/12.png?auto=compress&cs=tinysrgb&w=800" 
-                  alt="Personalizados" 
+                  src="/portfolio/22.png?auto=compress&cs=tinysrgb&w=800" 
+                  alt="Customizados" 
                   className="w-full h-full object-cover group-hover:scale-110 transition-transform duration-500"
                 />
               </div>
               <div className="absolute inset-0 bg-gradient-to-t from-black/70 via-transparent to-transparent opacity-0 group-hover:opacity-100 transition-opacity duration-300">
                 <div className="absolute bottom-4 left-4 right-4 text-white">
-                  <h3 className="text-lg font-bold mb-2">Pet personalizado</h3>
-                  <p className="text-sm opacity-90">Peça personalizada de um cachorrinho eternizando um grande amigo, peça feita em resina</p>
-                  <span className="inline-block mt-2 px-3 py-1 bg-indigo-500 rounded-full text-xs font-medium">Personalizados</span>
+                  <h3 className="text-lg font-bold mb-2">Suportes customizados para eletrônicos</h3>
+                  <p className="text-sm opacity-90">Peças diversas personalizadas para cada necessidade, em filamento ABS</p>
+                  <span className="inline-block mt-2 px-3 py-1 bg-green-500 rounded-full text-xs font-medium">Customizados</span>
+                </div>
+              </div>
+            </div>
+
+            {/* Projeto 23 - Customizados */}
+            <div className="group relative overflow-hidden rounded-2xl shadow-lg hover:shadow-2xl transition-all duration-500">
+              <div className="aspect-square bg-gradient-to-br from-purple-100 to-purple-200 dark:from-purple-900 dark:to-purple-800 flex items-center justify-center">
+                <img 
+                  src="/portfolio/23.png?auto=compress&cs=tinysrgb&w=800" 
+                  alt="Customizados" 
+                  className="w-full h-full object-cover group-hover:scale-110 transition-transform duration-500"
+                />
+              </div>
+              <div className="absolute inset-0 bg-gradient-to-t from-black/70 via-transparent to-transparent opacity-0 group-hover:opacity-100 transition-opacity duration-300">
+                <div className="absolute bottom-4 left-4 right-4 text-white">
+                  <h3 className="text-lg font-bold mb-2">Suportes customizados para equipamentos</h3>
+                  <p className="text-sm opacity-90">Peças diversas personalizadas para cada necessidade, em filamento ABS</p>
+                  <span className="inline-block mt-2 px-3 py-1 bg-purple-500 rounded-full text-xs font-medium">Customizados</span>
+                </div>
+              </div>
+            </div>
+
+            {/* Projeto 24 - Dummy Articulado */}
+            <div className="group relative overflow-hidden rounded-2xl shadow-lg hover:shadow-2xl transition-all duration-500">
+              <div className="aspect-square bg-gradient-to-br from-indigo-100 to-indigo-200 dark:from-indigo-900 dark:to-indigo-800 flex items-center justify-center">
+                <img 
+                  src="/portfolio/24.png?auto=compress&cs=tinysrgb&w=800" 
+                  alt="Dummy Articulado" 
+                  className="w-full h-full object-cover group-hover:scale-110 transition-transform duration-500"
+                />
+              </div>
+              <div className="absolute inset-0 bg-gradient-to-t from-black/70 via-transparent to-transparent opacity-0 group-hover:opacity-100 transition-opacity duration-300">
+                <div className="absolute bottom-4 left-4 right-4 text-white">
+                  <h3 className="text-lg font-bold mb-2">Manequim para desenhos e projetos</h3>
+                  <p className="text-sm opacity-90">Dummy articulado customizavel, feito em filamento ABS</p>
+                  <span className="inline-block mt-2 px-3 py-1 bg-indigo-500 rounded-full text-xs font-medium">Dummy Articulado</span>
                 </div>
               </div>
             </div>            
           </div>
 
+            {/* Projeto 25 - Polidoras */}
+            <div className="group relative overflow-hidden rounded-2xl shadow-lg hover:shadow-2xl transition-all duration-500">
+              <div className="aspect-square bg-gradient-to-br from-indigo-100 to-indigo-200 dark:from-indigo-900 dark:to-indigo-800 flex items-center justify-center">
+                <img 
+                  src="/portfolio/25.png?auto=compress&cs=tinysrgb&w=800" 
+                  alt="Polidoras" 
+                  className="w-full h-full object-cover group-hover:scale-110 transition-transform duration-500"
+                />
+              </div>
+              <div className="absolute inset-0 bg-gradient-to-t from-black/70 via-transparent to-transparent opacity-0 group-hover:opacity-100 transition-opacity duration-300">
+                <div className="absolute bottom-4 left-4 right-4 text-white">
+                  <h3 className="text-lg font-bold mb-2">Tone Holes Sanders</h3>
+                  <p className="text-sm opacity-90">Peças para lixar instrumentos musicais de sopro de madeira, feitas em filamento ABS</p>
+                  <span className="inline-block mt-2 px-3 py-1 bg-indigo-500 rounded-full text-xs font-medium">Polidoras</span>
+                </div>
+              </div>
+            </div>            
+          </div>          
+          
           <div className="text-center mt-12">
             <Button 
               onClick={() => window.open('https://instagram.com/3dfprint3d', '_blank')}
