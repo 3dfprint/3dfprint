@@ -215,19 +215,19 @@ const Index = () => {
           </div>
 
           <div className="grid md:grid-cols-2 lg:grid-cols-3 gap-8">
-            {/* Projeto 1 - Action Figure */}
+            {/* Projeto 1 - Action Figures */}
             <div className="group relative overflow-hidden rounded-2xl shadow-lg hover:shadow-2xl transition-all duration-500">
               <div className="aspect-square bg-gradient-to-br from-blue-100 to-blue-200 dark:from-blue-900 dark:to-blue-800 flex items-center justify-center">
                 <img 
-                  src="/portfolio/1.jpg?auto=compress&cs=tinysrgb&w=800" 
+                  src="/portfolio/1.png?auto=compress&cs=tinysrgb&w=800" 
                   alt="Action Figure" 
                   className="w-full h-full object-cover group-hover:scale-110 transition-transform duration-500"
                 />
               </div>
               <div className="absolute inset-0 bg-gradient-to-t from-black/70 via-transparent to-transparent opacity-0 group-hover:opacity-100 transition-opacity duration-300">
                 <div className="absolute bottom-4 left-4 right-4 text-white">
-                  <h3 className="text-lg font-bold mb-2">Action Figure</h3>
-                  <p className="text-sm opacity-90">Fallout estilo bubblehead</p>
+                  <h3 className="text-lg font-bold mb-2">Bonecos e réplicas da série de jogos Fallout</h3>
+                  <p className="text-sm opacity-90">Action figure da Power Armor, Fallout Boy estilo bubblehead e réplica da Nuka Cola</p>
                   <span className="inline-block mt-2 px-3 py-1 bg-brand-blue rounded-full text-xs font-medium">Action Figures</span>
                 </div>
               </div>
