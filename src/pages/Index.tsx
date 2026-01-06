@@ -430,7 +430,7 @@ const Index = () => {
                 </div>
               </div>
             </div>
-          <div className="grid md:grid-cols-2 lg:grid-cols-3 gap-8">
+            
             {/* Projeto 1 - Action Figures */}
             <div className="group relative overflow-hidden rounded-2xl shadow-lg hover:shadow-2xl transition-all duration-500">
               <div className="aspect-square bg-gradient-to-br from-blue-100 to-blue-200 dark:from-blue-900 dark:to-blue-800 flex items-center justify-center">
