@@ -646,7 +646,6 @@ const Index = () => {
                 </div>
               </div>
             </div>            
-          </div>
 
             {/* Projeto 25 - Polidoras */}
             <div className="group relative overflow-hidden rounded-2xl shadow-lg hover:shadow-2xl transition-all duration-500">
