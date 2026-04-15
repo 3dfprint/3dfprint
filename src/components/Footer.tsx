@@ -1,6 +1,6 @@
 import { Instagram, Mail, Phone } from 'lucide-react';
 import { Facebook } from 'lucide-react';
-import { Tiktok } from 'lucide-react';
+import { FaTiktok } from "react-icons/fa";
 import { useState } from 'react';
 import CookieConsent from './CookieConsent';
 import PrivacyPolicyModal from './PrivacyPolicyModal';
@@ -67,7 +67,7 @@ const Footer = () => {
                 onClick={handleTiktokClick}
                 className="w-10 h-10 bg-brand-red rounded-full flex items-center justify-center hover:bg-yellow-700 transition-colors"
               >
-                <Tiktok size={20} />
+                <FaTiktok size={20} />
               </button>              
               <button
                 onClick={handleFacebookClick}
