@@ -65,7 +65,7 @@ const Footer = () => {
               </button>
               <button
                 onClick={handleTiktokClick}
-                className="w-10 h-10 bg-brand-red rounded-full flex items-center justify-center hover:bg-yellow-700 transition-colors"
+                className="w-10 h-10 bg-brand-yellow rounded-full flex items-center justify-center hover:bg-yellow-700 transition-colors"
               >
                 <FaTiktok size={20} />
               </button>              
